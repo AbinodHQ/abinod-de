@@ -58,6 +58,10 @@
     {
       "source": "/products/",
       "destination": "/products/index.html"
+    },
+    {
+      "source": "/privacy/",
+      "destination": "/privacy/index.html"
     }
   ],
   "headers": [

@@ -89,6 +89,7 @@ jobs:
             "/blog/ambiten-v1-2-0-stronger-schema-enforcement/" \
             "/blog/strong-foundations-create-stronger-systems/" \
             "/contact/" \
+            "/privacy/" \
             "/docs/" \
             "/assets/site.js" \
             "/sw.js" \
