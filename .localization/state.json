@@ -1,0 +1,66 @@
+{
+  "about/index.html": {
+    "sourceHash": "b6cd010bc15759724e202906963f57785918776f800a2ee45dcd07d7432ffe34",
+    "outputHash": "5b58c07201746a71969ceafd7cf17350bb09db2421e45e5540a1c07dd6c8ad7e"
+  },
+  "blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/index.html": {
+    "sourceHash": "83f877521dce12e917648de776e78d015cbc0484fa51beb1f82b0909f58e5981",
+    "outputHash": "5c981225b3912469fc9672c43960d02575f9ee401c16040c243f7351c877e0bb"
+  },
+  "blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/index.html": {
+    "sourceHash": "4764dee32ca5d4a6d1ad1a72042ac29c54d9bca332f5db993b518b7f0bf3d6f7",
+    "outputHash": "fe1537512b046a43917a7f40189aebbd7c86f01b732c8c7d15cabee9237f1b5a"
+  },
+  "blog/ambiten-v1-2-0-stronger-schema-enforcement/index.html": {
+    "sourceHash": "39f4496a1d99396c5447009bf2f034d872b70174ba92f59df548103847dfd1b1",
+    "outputHash": "b36e2f05bdf0173b2985d3241e94e418fc47ba996c1e064d37fc2aacd49671cc"
+  },
+  "blog/index.html": {
+    "sourceHash": "cadda2d410e162586914246a978be1e1abf2852079d83c7aa972bff06b0b92b4",
+    "outputHash": "6b4f171e0505c4deca81bff4f1a8a487345cbfaee626e4f794358ce0db396ee8"
+  },
+  "blog/strong-foundations-create-stronger-systems/index.html": {
+    "sourceHash": "06b2bb39d15a8ebd1bba960d9ebc775404636790eca007f1713e4c38d63a8a7d",
+    "outputHash": "dc6bda8987b80855e9b252de831189eee31697927f776a25083352692509ef33"
+  },
+  "blog/verinodo-launch-v1.0.0/index.html": {
+    "sourceHash": "6fe0aef86e6597e8a0ce95b2b1f4669175c3a923ac236f6520a7c1428776d779",
+    "outputHash": "c24d620cbcacc1094ff592399d97a3d118ef71e4282bc85bc11ea0e0d57ac860"
+  },
+  "brand-essence/index.html": {
+    "sourceHash": "e401e6e164cc71a7f422f911bd94390484da8848fbc4324e7f982dfbc1d524b1",
+    "outputHash": "a01554603d5d254e21a0fe327156a60dcf261dadbadf1264cdf5c829b70102f4"
+  },
+  "contact/index.html": {
+    "sourceHash": "a373cbc37d24553f8a9cd99e975d82f9415e9ff8b6c97c84a7fbb6c2be267f00",
+    "outputHash": "ecd3e612f78e198fb0d1f6d97b84b427fec91daa2941babf72d2bf27901a3900"
+  },
+  "docs/index.html": {
+    "sourceHash": "8a171c2b0772dd9a428a12d1c2900170f1b9e9023f922e2785aa8588952b9ef0",
+    "outputHash": "43f786168fdcbd70ea86384efb3ad18a30a271b810b0846db4becd1759889e35"
+  },
+  "ecosystem/index.html": {
+    "sourceHash": "d3d1a320bde3a5e661a6d8ffb4a850826e53ad1e273460dfb1fb9268ee9919f3",
+    "outputHash": "c3a9ed69f3efcece40f9d6b2f458483f1059ec64f5f37b43c46df2c8129b4b11"
+  },
+  "founder/index.html": {
+    "sourceHash": "07c95a23951962cc5f3fd68fcc7f8c0964c504052e40336e0f24e5550ec40a45",
+    "outputHash": "eee1609ed9dc0929bbc15a19a9175beb716ba6225d2ae3283def286943c3f322"
+  },
+  "index.html": {
+    "sourceHash": "c9f1a003b12a07acd6758a268f1fb58f815016c59115a1713356a14d93b684ba",
+    "outputHash": "17ec9a14ccfb9bb04b0d4b734e8bcf3a4f68416e48cbc4f3cfabfd43070222ae"
+  },
+  "mission/index.html": {
+    "sourceHash": "04e6eeed28111b8600a3844c3392a935e5eb5e0d4c5c4552108016123fa56115",
+    "outputHash": "b4e3807ce5e39ca0215bd79038b43b72b571e0dc31831b5cde91426692094636"
+  },
+  "og-abinod.html": {
+    "sourceHash": "e421d935f54359180deccd3e11f3518cfc5a7a08d4f1eb51eda2fcf9229e17c7",
+    "outputHash": "63f28f5c731596ac635cbc33c58e5e595ea893c832df2049448caf2c30c92a94"
+  },
+  "products/index.html": {
+    "sourceHash": "db8e251dbdf7875023d97c24ab8d2b2c52251adfe03864d0652f1f2c5549e959",
+    "outputHash": "d3e33c1fd9508cde3c368ec4d8467f39648deb94a1a43e51afb72c6b43ceda2f"
+  }
+}

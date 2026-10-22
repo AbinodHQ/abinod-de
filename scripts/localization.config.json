@@ -1,0 +1,5 @@
+{
+  "stateDir": ".localization",
+  "protectedTerms": ["Abinod", "Ambiten", "VeriNodo", "PureConsent", "AbinodHQ", "Node.js", "MongoDB", "Redis"],
+  "excludeFiles": ["privacy/**", "impressum/**", "legal/**"]
+}

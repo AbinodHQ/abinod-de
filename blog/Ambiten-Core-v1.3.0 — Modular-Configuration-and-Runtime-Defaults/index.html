@@ -1,70 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="de"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ambiten Core v1.3.0 führt externe Schema- und Modellmodule, deklarative Laufzeittstandardeinstellungen, Module zur Tenant-Auflösung sowie eine verbesserte Bootstrap-Protokollierung ein.">
 
-  <meta name="description"
-    content="Ambiten Core v1.3.0 introduces external schema and model modules, declarative runtime defaults, tenant resolver modules, and improved bootstrap logging." />
+  <meta property="og:title" content="Ambiten Core v1.3.0 – Modulare Konfiguration und Laufzeiteinstellungen | Abinod">
 
-  <meta property="og:title" content="Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod" />
+  <meta property="og:description" content="Sorgen Sie dafür, dass die Anwendungskonfiguration mithilfe externer Module überschaubar bleibt, lösen Sie Schema-Standardwerte während der Ausführung auf und binden Sie die externe Mandantenkonfiguration über den Bootstrap-Prozess ein.">
 
-  <meta property="og:description"
-    content="Keep application configuration manageable with external modules, resolve schema defaults during execution, and connect external tenant configuration through bootstrap." />
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-10-18">
+  <meta property="og:image" content="../../assets/og-abinod.png">
 
-  <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2026-10-18" />
-  <meta property="og:image" content="../../assets/og-abinod.png" />
+  <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ambiten Core v1.3.0 – Modulare Konfiguration und Laufzeiteinstellungen | Abinod">
 
-  <meta name="twitter:title" content="Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod" />
+  <meta name="twitter:description" content="Externe Konfigurationsmodule, ausführungsorientierte Schema-Standardwerte, Integration des Mandanten-Resolvers und ein zuverlässigeres Bootstrap-Verhalten in Ambiten Core v1.3.0.">
 
-  <meta name="twitter:description"
-    content="External configuration modules, execution-aware schema defaults, tenant resolver integration, and more reliable bootstrap behavior in Ambiten Core v1.3.0." />
-
-  <meta name="twitter:image" content="../../assets/og-abinod.png" />
+  <meta name="twitter:image" content="../../assets/og-abinod.png">
 
   <title>
-    Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod
+    Ambiten Core v1.3.0 – Modulare Konfiguration und Laufzeiteinstellungen | Abinod
   </title>
 
-  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="../../styles.css" />
-</head>
+  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css">
+<link rel="alternate" hreflang="de-DE" href="https://www.abinod.de/blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/"><link rel="alternate" hreflang="en" href="https://www.abinod.com/blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/"><link rel="alternate" hreflang="x-default" href="https://www.abinod.com/blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/"><link rel="canonical" href="https://www.abinod.de/blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/">  <link rel="stylesheet" href="../../assets/language-switcher.css" data-abinod-lang-switcher="style">
+  </head>
 
 <body>
   <header class="site-header page-header">
-    <a class="brand" href="../../" aria-label="Abinod home">
-      <img src="../../assets/abinod-mark.svg" alt="" />
+    <a class="brand" href="../../" aria-label="Abinod Startseite">
+      <img src="../../assets/abinod-mark.svg" alt="">
       <span>Abinod</span>
     </a>
 
-    <nav aria-label="Primary navigation">
-      <a href="../../products/">Products</a>
-      <a href="../../ecosystem/">Ecosystem</a>
-      <a href="../../#company">Company</a>
-      <a href="../../about/">About</a>
-      <a href="../../founder/">Founder</a>
-      <a href="../../mission/">Mission</a>
-      <a href="../../brand-essence/">Brand Essence</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="../../products/">Produkte</a>
+      <a href="../../ecosystem/">Ökosystem</a>
+      <a href="../../#company">Unternehmen</a>
+      <a href="../../about/">Über</a>
+      <a href="../../founder/">Gründer</a>
+      <a href="../../mission/">Leitbild</a>
+      <a href="../../brand-essence/">Markenessenz</a>
       <a href="../">Blog</a>
-      <a href="../../contact/">Contact</a>
-      <a href="../privacy/">Privacy Policy</a>
+      <a href="../../contact/">Kontakt</a>
+      <a href="../privacy/">Datenschutzerklärung</a>
     </nav>
 
     <div class="header-actions">
-      <button class="header-button guide-toggle" type="button" data-guide-toggle>
-        Guide
+      <button class="header-button guide-toggle" type="button" data-guide-toggle="">
+        Leitfaden
       </button>
 
-      <button class="header-button" type="button" data-theme-toggle>
-        Dark
+      <button class="header-button" type="button" data-theme-toggle="">
+        Dunkel
       </button>
 
-      <button class="header-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation"
-        aria-expanded="false">
+      <button class="header-button menu-toggle" type="button" data-menu-toggle="" aria-label="Navigation öffnen" aria-expanded="false">
         <span></span>
       </button>
     </div>
@@ -73,104 +68,104 @@
   <main>
     <article class="blog-article">
       <header class="blog-article-hero">
-        <p class="eyebrow">Ambiten Release</p>
+        <p class="eyebrow">Ambiten – Veröffentlichung</p>
 
         <h1>
-          Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults
+          Ambiten Core v1.3.0 – Modulare Konfiguration und Laufzeiteinstellungen
         </h1>
 
         <p>
-          External schema and model modules, declarative runtime defaults,
-          tenant resolver integration, and more reliable application
-          bootstrap behavior.
+          Externe Schema- und Modellmodule, deklarative Laufzeiteinstellungen,
+die Integration des Mandanten-Resolvers sowie ein zuverlässigeres
+Anwendungs-Bootstrap-Verhalten.
         </p>
 
         <div class="article-author-block">
-          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56" />
+          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56">
 
           <div>
-            <span>Written by</span>
+            <span>Verfasst von</span>
             <strong>Emmanuel Abiodun Nodolomwanyi</strong>
           </div>
         </div>
 
         <div class="article-meta article-meta-rich">
-          <span>Product Update</span>
+          <span>Produktaktualisierung</span>
 
           <span>
             <time datetime="2026-10-18">
-              October 18, 2026
+              18. Oktober 2026
             </time>
           </span>
 
-          <span>10 min read</span>
+          <span>10 Minuten Lesezeit</span>
 
-          <button class="article-share-button" type="button" data-share-button aria-label="Share this article">
+          <button class="article-share-button" type="button" data-share-button="" aria-label="Diesen Artikel teilen">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 5l-8 4.5M8 14.5l8 4.5" />
-              <circle cx="18" cy="4" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="20" r="3" />
+              <path d="M16 5l-8 4.5M8 14.5l8 4.5"></path>
+              <circle cx="18" cy="4" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="20" r="3"></circle>
             </svg>
 
-            <span>Share</span>
+            <span>Teilen</span>
           </button>
         </div>
       </header>
 
       <div class="blog-article-body">
         <p class="article-lede">
-          Ambiten Core v1.3.0 improves the connection between application
-          configuration and runtime behavior. Schemas and model options can
-          live in external modules, JSON schemas can declare values that
-          resolve during execution, and bootstrap configuration can connect
-          directly to an external tenant configuration resolver.
+          Ambiten Core v1.3.0 verbessert die Verknüpfung zwischen der Anwendungskonfiguration
+ und dem Laufzeitverhalten. Schemas und Modelloptionen können
+in externen Modulen gespeichert werden, JSON-Schemas können Werte deklarieren, die
+während der Ausführung aufgelöst werden, und die Bootstrap-Konfiguration kann
+direkt mit einem externen Tenant-Konfigurations-Resolver verbunden werden.
         </p>
 
         <p>
-          The release also restores preparation of configured log files
-          during startup, updates generated applications to request the
-          current Core release, and addresses package compatibility across
-          ESM, CommonJS, browser builds, and Windows build tooling.
+          Mit dieser Version wird zudem die Erstellung konfigurierter Protokolldateien
+beim Systemstart wiederhergestellt, die generierten Anwendungen werden aktualisiert, um die
+aktuelle Core-Version anzufordern, und es werden Kompatibilitätsprobleme bei den Paketen zwischen
+ESM, CommonJS, Browser-Builds und Windows-Build-Tools behoben.
         </p>
 
         <p>
-          v1.2.4 clarified how context, models, providers, and tenant
-          infrastructure work together. v1.3.0 builds on those boundaries
-          by making them easier to configure in an application.
+          In Version 1.2.4 wurde verdeutlicht, wie Kontext, Modelle, Anbieter und Mandanteninfrastruktur
+zusammenwirken. Version 1.3.0 baut auf diesen Rahmenbedingungen auf,
+indem sie deren Konfiguration in einer Anwendung vereinfacht.
         </p>
 
         <blockquote>
-          Configuration identifies what an application needs. Modules
-          organize its definitions. Execution context supplies the values
-          that belong to the current operation.
+          Die Konfiguration legt fest, was eine Anwendung benötigt. Module
+ organisieren deren Definitionen. Der Ausführungskontext stellt die Werte bereit,
+ die zum aktuellen Vorgang gehören.
         </blockquote>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Configuration That Can Grow With The Application</h2>
+        <h2>Eine Konfiguration, die mit der Anwendung mitwachsen kann</h2>
 
         <p>
-          Inline configuration remains useful for a small application.
-          A schema with a handful of fields and a model with a collection
-          name can be easy to understand in one JSON file.
+          Die Inline-Konfiguration ist für eine kleine Anwendung nach wie vor sinnvoll.
+Ein Schema mit wenigen Feldern und ein Modell mit einem Sammlungsnamen
+lassen sich in einer einzigen JSON-Datei leicht nachvollziehen.
         </p>
 
         <p>
-          As the application grows, those definitions can occupy most of
-          the configuration file. Reviewing a connection setting or tenant
-          option then requires navigating through an increasingly large
-          document.
+          Mit zunehmendem Umfang der Anwendung können diese Definitionen den größten Teil
+der Konfigurationsdatei einnehmen. Um eine Verbindungseinstellung oder eine Mandantenoption
+zu überprüfen, muss man sich daher durch ein immer umfangreicheres
+Dokument arbeiten.
         </p>
 
         <p>
-          In v1.3.0, the <code>schema</code> and <code>model</code>
-          properties support external module references. Each reference
-          identifies a file and the export that bootstrap should load.
+          In Version 1.3.0 wurde die <code>schema</code> und <code>model</code>
+          Eigenschaften unterstützen Verweise auf externe Module. Jeder Verweis
+bezeichnet eine Datei und den Export, den „Bootstrap“ laden soll.
         </p>
 
         <p>
-          For example, these properties can appear in
+          Diese Eigenschaften können beispielsweise in folgenden Fällen auftreten:
           <code>ambiten.config.json</code>:
         </p>
 
@@ -186,7 +181,7 @@
 }</code></pre>
 
         <p>
-          The schema module exports a schema definition object:
+          Das Schema-Modul exportiert ein Schema-Definitionsobjekt:
         </p>
 
         <pre><code>// src/schemas/user.schema.mjs
@@ -237,7 +232,7 @@ export const userSchema = {
 };</code></pre>
 
         <p>
-          The model module exports model options:
+          Das Modellmodul exportiert Modelloptionen:
         </p>
 
         <pre><code>// src/models/user.model.mjs
@@ -247,68 +242,68 @@ export const userModelOptions = {
 };</code></pre>
 
         <p>
-          Bootstrap loads these objects and constructs the schema and model
-          infrastructure. Inline definitions remain supported, so each
-          application can choose the organization that fits its size.
+          Bootstrap lädt diese Objekte und baut die Schema- und Modellinfrastruktur auf.
+Inline-Definitionen werden weiterhin unterstützt, sodass jede
+Anwendung die Organisationsstruktur wählen kann, die ihrer Größe entspricht.
         </p>
 
         <p>
-          Paths in a JSON configuration file resolve relative to that
-          file. Paths in a programmatically supplied configuration object
-          resolve relative to the process working directory.
-          Omitting <code>exportName</code> selects the default export.
+          Pfade in einer JSON-Konfigurationsdatei werden relativ zu dieser
+Datei aufgelöst. Pfade in einem programmgesteuert übergebenen Konfigurationsobjekt
+werden relativ zum Arbeitsverzeichnis des Prozesses aufgelöst.
+Das Weglassen von <code>exportName</code> wählt den Standardexport aus.
         </p>
 
         <p>
-          The existing <code>features.schemas</code> and
-          <code>features.models</code> values describe scaffolding
-          locations. Runtime module loading is configured through the
-          <code>schema</code> and <code>model</code> properties; it does
-          not scan those feature directories automatically.
+          Die bestehende <code>features.schemas</code> und
+          <code>features.models</code> Die Werte beschreiben die Standorte
+der Scaffolding-Elemente. Das Laden von Modulen zur Laufzeit wird über die
+          <code>schema</code> und <code>model</code> Eigenschaften; diese
+ Feature-Verzeichnisse werden nicht automatisch durchsucht.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Runtime Defaults Resolved Per Document</h2>
+        <h2>Laufzeit-Standardwerte, die pro Dokument festgelegt werden</h2>
 
         <p>
-          Some document values only make sense when an operation runs.
-          A creation timestamp belongs to the document being created.
-          A generated identifier should be produced for that document.
-          A tenant identifier depends on the active execution.
+          Manche Dokumentwerte sind nur dann aussagekräftig, wenn eine Operation ausgeführt wird.
+Ein Erstellungszeitstempel gehört zu dem Dokument, das gerade erstellt wird.
+Für dieses Dokument sollte eine generierte Kennung erstellt werden.
+Eine Mandanten-Kennung hängt von der aktiven Ausführung ab.
         </p>
 
         <p>
-          v1.3.0 introduces declarative <code>$runtime</code> defaults
-          that express these requirements in a JSON-compatible schema.
+          Mit Version 1.3.0 werden deklarative Funktionen eingeführt <code>$runtime</code> Standardwerte,
+die diese Anforderungen in einem JSON-kompatiblen Schema ausdrücken.
         </p>
 
         <ul>
           <li>
-            <code>{ "$runtime": "now" }</code> creates a
-            <code>Date</code> when the default is applied.
+            <code>{ "$runtime": "now" }</code> erstellt ein
+            <code>Date</code> wenn die Standardeinstellung angewendet wird.
           </li>
 
           <li>
-            <code>{ "$runtime": "uuid" }</code> generates a UUID.
+            <code>{ "$runtime": "uuid" }</code> erzeugt eine UUID.
           </li>
 
           <li>
             <code>{ "$runtime": "context", "key": "tenantId" }</code>
-            reads the tenant identifier from the active
+            liest die Mandanten-ID aus dem aktiven
             <code>AmbitenContext</code>.
           </li>
         </ul>
 
         <p>
-          Context defaults support <code>tenantId</code>,
-          <code>requestId</code>, <code>dbName</code>, and
+          Unterstützung für Kontext-Standardwerte <code>tenantId</code>,
+          <code>requestId</code>, <code>dbName</code>, und
           <code>collectionName</code>.
         </p>
 
         <p>
-          Using the schema above, validation can resolve the missing
-          values within an execution context:
+          Anhand des obigen Schemas kann die Validierung die fehlenden
+Werte innerhalb eines Ausführungskontexts ermitteln:
         </p>
 
         <pre><code>import {
@@ -329,74 +324,74 @@ const document = {
 
 await AmbitenContext.run(
   { tenantId: "tenant-a" },
-  async () => {
+  async () =&gt; {
     await schema.validateAsync(document);
   }
 );</code></pre>
 
         <p>
-          This example performs schema validation without a database write.
-          Validation adds the tenant identifier, a UUID, a creation
-          timestamp, and the <code>isDeleted</code> default to the document.
+          In diesem Beispiel wird eine Schemavalidierung ohne Schreibvorgang in die Datenbank durchgeführt.
+Bei der Validierung werden die Mandanten-ID, eine UUID, ein
+Erstellungszeitstempel sowie die <code>isDeleted</code> Standardmäßig im Dokument.
         </p>
 
         <p>
-          Defaults apply when a field is <code>undefined</code>.
-          Supplied values remain subject to validation. Object and array
-          defaults are copied for each document, preventing separate
-          documents from sharing the same mutable default value.
+          Standardwerte gelten, wenn ein Feld <code>undefined</code>.
+ Die angegebenen Werte unterliegen weiterhin einer Validierung. Die Standardwerte von Objekten und Arrays
+ werden für jedes Dokument kopiert, wodurch verhindert wird, dass verschiedene
+ Dokumente denselben veränderbaren Standardwert gemeinsam nutzen.
         </p>
 
         <p>
-          Unsupported runtime directives and context keys are rejected.
-          A context default also fails when its requested value is
-          unavailable during execution.
+          Nicht unterstützte Laufzeitanweisungen und Kontextschlüssel werden abgelehnt.
+Ein Kontextstandardwert schlägt ebenfalls fehl, wenn der angeforderte Wert
+während der Ausführung nicht verfügbar ist.
         </p>
 
         <p>
-          The same default contract applies to inline schemas and external
-          schema modules: use JSON-compatible literal values or supported
-          <code>$runtime</code> descriptors.
+          Für Inline-Schemas und externe
+Schema-Module gilt derselbe Standardvertrag: Verwenden Sie JSON-kompatible Literalwerte oder unterstützte
+          <code>$runtime</code> Deskriptoren.
         </p>
 
-        <h3>Creation And Deletion Have Different Defaults</h3>
+        <h3>Für das Anlegen und das Löschen gelten unterschiedliche Standardeinstellungen</h3>
 
         <p>
-          The example deliberately leaves <code>deletedAt</code>
-          optional and without a default.
-        </p>
-
-        <p>
-          A newly created document has <code>isDeleted: false</code>
-          and no deletion timestamp. A deletion workflow can assign a
-          date when deletion occurs.
+          In diesem Beispiel wird bewusst <code>deletedAt</code>
+          optional und ohne Standardwert.
         </p>
 
         <p>
-          A <code>date</code> field requires a valid
-          <code>Date</code> value when supplied. Assigning
-          <code>false</code> to <code>deletedAt</code> violates that
-          type, while defaulting it to the current time incorrectly
-          records a deletion timestamp at creation.
-        </p>
-
-        <hr class="article-divider" />
-
-        <h2>External Tenant Configuration Through Bootstrap</h2>
-
-        <p>
-          Ambiten already separates tenant identity from tenant
-          infrastructure. A request resolver identifies the tenant,
-          <code>AmbitenContext</code> carries that identity, and
-          <code>MultiTenantManager</code> resolves the corresponding
-          database resources.
+          Ein neu erstelltes Dokument enthält <code>isDeleted: false</code>
+          und ohne Löschzeitstempel. Ein Lösch-Workflow kann ein
+ Datum festlegen, an dem die Löschung erfolgt.
         </p>
 
         <p>
-          v1.3.0 extends the JSON configuration path with
+          A <code>date</code> In diesem Feld muss ein gültiger Wert eingegeben werden
+          <code>Date</code> Wert, sofern angegeben. Zuweisung
+          <code>false</code> bis <code>deletedAt</code> verstößt gegen diesen
+Typ, während die fälschlicherweise als Standard festgelegte aktuelle Uhrzeit
+bei der Erstellung einen Zeitstempel für die Löschung aufzeichnet.
+        </p>
+
+        <hr class="article-divider">
+
+        <h2>Konfiguration externer Mandanten über Bootstrap</h2>
+
+        <p>
+          Ambiten trennt bereits die Identität des Mandanten von der
+Mandanteninfrastruktur. Ein Request-Resolver identifiziert den Mandanten,
+          <code>AmbitenContext</code> trägt diese Identität in sich, und
+          <code>MultiTenantManager</code> löst die entsprechenden
+Datenbankressourcen auf.
+        </p>
+
+        <p>
+          In Version 1.3.0 wird der JSON-Konfigurationspfad um Folgendes erweitert:
           <code>multiTenant.tenantConfigResolverModule</code>.
-          Applications can now connect an external tenant configuration
-          resolver through the same file-and-export pattern.
+Anwendungen können nun einen externen Tenant-Konfigurations-Resolver
+über dasselbe „File-and-Export“-Muster anbinden.
         </p>
 
         <pre><code>{
@@ -414,14 +409,14 @@ await AmbitenContext.run(
 }</code></pre>
 
         <p>
-          The selected export is a function receiving a tenant identifier.
-          It returns tenant configuration, or <code>undefined</code> or
-          <code>null</code> when the tenant cannot be resolved.
+          Der ausgewählte Export ist eine Funktion, die eine Mandanten-ID als Parameter entgegennimmt.
+Sie gibt die Mandantenkonfiguration zurück oder <code>undefined</code> oder
+          <code>null</code> wenn das Problem mit dem Mieter nicht gelöst werden kann.
         </p>
 
         <p>
-          A small application might resolve an explicit set of tenant
-          identifiers from environment-provided connection strings:
+          Eine kleine Anwendung könnte eine bestimmte Menge von Mandanten-
+Identifikatoren aus den von der Umgebung bereitgestellten Verbindungszeichenfolgen auflösen:
         </p>
 
         <pre><code>// src/tenantResolver.mjs
@@ -442,50 +437,50 @@ export function resolveTenantConfig(tenantId) {
 }</code></pre>
 
         <p>
-          The function can also be asynchronous when configuration comes
-          from a control database, account service, configuration API, or
-          another application-owned source.
+          Die Funktion kann auch asynchron ablaufen, wenn die Konfiguration
+ aus einer Steuerungsdatenbank, einem Kontodienst, einer Konfigurations-API oder
+ einer anderen anwendungsspezifischen Quelle stammt.
         </p>
 
         <p>
-          Resolved configuration contains a MongoDB <code>uri</code>,
-          with optional <code>dbName</code> and
-          <code>metadata</code>. MultiTenantManager manages registration
-          and client state.
+          Die aufgelöste Konfiguration enthält einen Eintrag „MongoDB“ <code>uri</code>,
+ mit optionaler <code>dbName</code> und
+          <code>metadata</code>. Der MultiTenantManager verwaltet die Registrierung
+und den Client-Status.
         </p>
 
         <p>
-          Static tenants and dynamically discovered tenants can coexist.
-          The local registry is checked first; the external resolver
-          supplies configuration for tenants that are not registered.
+          Statische Mandanten und dynamisch erkannte Mandanten können nebeneinander bestehen.
+Zunächst wird die lokale Registrierungsdatenbank überprüft; der externe Resolver
+liefert die Konfiguration für Mandanten, die nicht registriert sind.
         </p>
 
         <p>
-          Request authentication and authorization remain application
-          responsibilities. Resolving a tenant's database configuration
-          does not establish whether a caller may access that tenant.
+          Die Anforderung der Authentifizierung und Autorisierung obliegt weiterhin der Anwendung.
+Die Auflösung der Datenbankkonfiguration eines Mandanten
+gibt keinen Aufschluss darüber, ob ein Aufrufer auf diesen Mandanten zugreifen darf.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Log Files Prepared During Startup</h2>
-
-        <p>
-          Bootstrap logging should make its configured destination
-          available when the application initializes.
-        </p>
+        <h2>Beim Systemstart erstellte Protokolldateien</h2>
 
         <p>
-          v1.3.0 restores preparation of the parent directory and log
-          file for declaratively configured file transports. Bootstrap
-          resolves the destination, creates missing directories, and
-          opens the file in append mode before constructing the
-          transport.
+          Die Bootstrap-Protokollierung sollte das konfigurierte Ziel
+bereits bei der Initialisierung der Anwendung bereitstellen.
         </p>
 
         <p>
-          An explicit console and rotating-file configuration can look
-          like this:
+          In Version 1.3.0 wurde die Vorbereitung des übergeordneten Verzeichnisses und der Protokolldatei
+für deklarativ konfigurierte Dateitransporte wiederhergestellt. Der Bootstrap-Prozess
+ermittelt das Ziel, legt fehlende Verzeichnisse an und
+öffnet die Datei im Anfüge-Modus, bevor der
+Transport aufgebaut wird.
+        </p>
+
+        <p>
+          Eine explizite Konfiguration für die Konsole und die rotierende Datei könnte
+ wie folgt aussehen:
         </p>
 
         <pre><code>{
@@ -508,122 +503,122 @@ export function resolveTenantConfig(tenantId) {
 }</code></pre>
 
         <p>
-          Relative log destinations resolve from the process working
-          directory. Existing file contents are preserved, and a failure
-          to prepare the destination is reported during initialization.
+          Relative Protokollziele werden ausgehend vom Arbeitsverzeichnis des Prozesses
+aufgelöst. Der Inhalt vorhandener Dateien bleibt erhalten, und ein Fehler
+bei der Vorbereitung des Ziels wird während der Initialisierung gemeldet.
         </p>
 
         <p>
-          When logging is enabled and no transports are supplied,
-          bootstrap uses its default console and rotating-file
-          transports. An explicit console-only runtime configuration
-          remains console-only.
+          Wenn die Protokollierung aktiviert ist und keine Transporte angegeben werden,
+verwendet Bootstrap seine Standardtransporte „console“ und „rotating-file“.
+Eine explizite Laufzeitkonfiguration, die ausschließlich die Konsole vorsieht,
+bleibt auf die Konsole beschränkt.
         </p>
 
         <p>
-          Applications supplying their own logger instance or executable
-          transports retain responsibility for configuring those
-          transports.
+          Anwendungen, die eine eigene Logger-Instanz oder ausführbare
+Transportkomponente bereitstellen, sind weiterhin für die Konfiguration dieser
+Transportkomponenten verantwortlich.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Module Loading Follows The Application Runtime</h2>
-
-        <p>
-          External configuration modules use native module loading, with
-          support for selecting exports from ESM and CommonJS modules.
-          File paths are converted to file URLs so Windows paths can
-          participate in the same loading process.
-        </p>
+        <h2>Das Laden der Module erfolgt während der Laufzeit der Anwendung</h2>
 
         <p>
-          The examples in this article use <code>.mjs</code> files so
-          their module format is explicit.
+          Externe Konfigurationsmodule nutzen das native Modul-Laden und
+unterstützen die Auswahl von Exporten aus ESM- und CommonJS-Modulen.
+Dateipfade werden in Datei-URLs umgewandelt, sodass auch Windows-Pfade
+in denselben Ladevorgang einbezogen werden können.
         </p>
 
         <p>
-          Applications using <code>.ts</code> configuration modules
-          need TypeScript support in the process performing the native
-          import. With <code>tsx</code> installed, a development command
-          can be:
+          In den Beispielen dieses Artikels wird Folgendes verwendet: <code>.mjs</code> Dateien, sodass
+ ihr Modulformat eindeutig ist.
+        </p>
+
+        <p>
+          Anwendungen, die <code>.ts</code> Konfigurationsmodule
+benötigen TypeScript-Unterstützung bei der Durchführung des nativen
+Imports. Mit <code>tsx</code> Nach der Installation könnte ein Entwicklungsbefehl
+wie folgt lauten:
         </p>
 
         <pre><code>node --import tsx src/main.ts</code></pre>
 
         <p>
-          A CommonJS require hook alone does not provide that native
-          import support.
+          Ein CommonJS-„require“-Hook allein bietet diese native
+Importunterstützung nicht.
         </p>
 
         <p>
-          For compiled deployments, point configuration references at
-          the emitted JavaScript files and include those files in the
-          deployment. Compiling the application does not automatically
-          rewrite module paths inside its JSON configuration.
+          Bei kompilierten Bereitstellungen richten Sie die Konfigurationsverweise auf
+die generierten JavaScript-Dateien aus und fügen Sie diese Dateien in die
+Bereitstellung ein. Durch das Kompilieren der Anwendung werden die
+Modulpfade in der JSON-Konfiguration nicht automatisch neu geschrieben.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Stronger Package Boundaries</h2>
+        <h2>Stärkere Paketgrenzen</h2>
 
         <p>
-          Runtime behavior also depends on how packages are built,
-          installed, and imported.
+          Das Laufzeitverhalten hängt auch davon ab, wie Pakete erstellt,
+installiert und importiert werden.
         </p>
 
         <p>
-          This release includes corrections to emitted ESM references,
-          package-boundary compatibility, browser bundle compilation,
-          and Windows package-manager invocation.
+          Diese Version enthält Korrekturen hinsichtlich der ausgegebenen ESM-Referenzen,
+der Kompatibilität über Paketgrenzen hinweg, der Kompilierung von Browser-Bundles
+sowie des Aufrufs des Windows-Paketmanagers.
         </p>
 
         <ul>
           <li>
-            ESM module references include the file extensions required
-            by Node.js.
+            Die ESM-Modulverweise enthalten die Dateiendungen, die
+von Node.js benötigt werden.
           </li>
 
           <li>
-            Package integration checks cover CommonJS and ESM
-            consumption across Core, adapter types, adapter runtime,
-            and the Express adapter.
+            Die Überprüfungen zur Paketintegration umfassen die Nutzung von CommonJS und ESM
+in Core, den Adaptertypen, der Adapter-Laufzeitumgebung
+sowie dem Express-Adapter.
           </li>
 
           <li>
-            Those checks also cover the request context used across
-            the tested Core and adapter package boundaries.
+            Diese Prüfungen erstrecken sich auch auf den Anforderungskontext, der über
+die Grenzen der getesteten Core- und Adapter-Pakete hinweg verwendet wird.
           </li>
 
           <li>
-            Browser build errors involving Node.js module imports
-            have been addressed.
+            Fehler beim Erstellen des Browsers im Zusammenhang mit dem Import des Moduls „Node.js“
+wurden behoben.
           </li>
 
           <li>
-            Build and package integration scripts handle Windows
-            invocation of pnpm more reliably.
+            Integrationsskripte für den Build- und Paketierungsprozess sorgen für eine zuverlässigere
+Ausführung von pnpm unter Windows.
           </li>
         </ul>
 
         <p>
-          These changes support the runtime architecture described in
-          the previous release: an adapter establishes execution
-          context, and application operations must be able to observe
-          that same context through the installed packages.
+          Diese Änderungen unterstützen die in
+ der vorherigen Version beschriebene Laufzeitarchitektur: Ein Adapter richtet den Ausführungskontext ein,
+ und Anwendungsoperationen müssen in der Lage sein,
+ denselben Kontext über die installierten Pakete zu beobachten.
         </p>
 
         <p>
-          Related packages retain their own version numbers.
-          <code>v1.3.0</code> identifies this Core release.
+          Die zugehörigen Pakete behalten ihre eigenen Versionsnummern bei.
+          <code>v1.3.0</code> bezeichnet diese Core-Version.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Bootstrapping With The Current Core Release</h2>
+        <h2>Bootstrapping mit der aktuellen Core-Version</h2>
 
         <p>
-          Generated applications now declare:
+          Generierte Anwendungen enthalten nun folgende Deklaration:
         </p>
 
         <pre><code>{
@@ -633,153 +628,153 @@ export function resolveTenantConfig(tenantId) {
 }</code></pre>
 
         <p>
-          During the initial dependency installation, the package manager
-          resolves the version published under the registry's
-          <code>latest</code> tag.
+          Bei der erstmaligen Installation einer Abhängigkeit ermittelt der Paketmanager
+die unter der Registry veröffentlichte Version
+          <code>latest</code> Tag.
         </p>
 
         <p>
-          This makes the scaffold's intent explicit and allows a newly
-          generated application to begin with the current tagged Core
-          release, including when that tag moves beyond the original
-          major-version range.
+          Dadurch wird die Absicht des Scaffolds deutlich gemacht, und eine neu
+generierte Anwendung kann mit der aktuellen, mit einem Tag versehenen Core-Version
+starten – auch dann, wenn dieses Tag über den ursprünglichen
+Bereich der Hauptversionen hinausgeht.
         </p>
 
         <p>
-          The installed dependency tree and lockfile then record the
-          selected version. Existing applications continue to control
-          dependency updates through their normal package-management
-          workflow.
+          Der installierte Abhängigkeitsbaum und die Lockdatei erfassen dann die
+ausgewählte Version. Bestehende Anwendungen steuern weiterhin
+die Aktualisierung von Abhängigkeiten über ihren üblichen
+Workflow der Paketverwaltung.
         </p>
 
         <p>
-          Interactive scaffold summaries have also been updated to
-          accommodate the revised model configuration structure.
+          Die interaktiven Zusammenfassungen der Gerüste wurden ebenfalls aktualisiert, um
+der überarbeiteten Struktur der Modellkonfiguration Rechnung zu tragen.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Installing Ambiten Core v1.3.0</h2>
+        <h2>Installation von Ambiten Core v1.3.0</h2>
 
         <p>
-          Install or update Core with:
+          Installieren oder aktualisieren Sie Core mit:
         </p>
 
         <pre><code>pnpm add @ambiten/core@1.3.0</code></pre>
 
-        <p>Or with npm:</p>
+        <p>Oder mit npm:</p>
 
         <pre><code>npm install @ambiten/core@1.3.0</code></pre>
 
         <p>
-          To run the bootstrap CLI supplied by this release:
+          So führen Sie die in dieser Version enthaltene Bootstrap-Befehlszeilenschnittstelle aus:
         </p>
 
         <pre><code>pnpm --package=@ambiten/core@1.3.0 dlx ambiten init my-app</code></pre>
 
         <p>
-          This command selects the v1.3.0 CLI. The generated application's
-          Core dependency still uses <code>latest</code>, which is
-          resolved when its dependencies are installed.
+          Dieser Befehl wählt die CLI-Version 1.3.0 aus. Die generierte Anwendung
+verwendet weiterhin die Kernabhängigkeit <code>latest</code>, das
+aufgelöst wird, sobald seine Abhängigkeiten installiert sind.
         </p>
 
-        <h3>Review The Generated MongoDB Dependency</h3>
+        <h3>Überprüfung der generierten Abhängigkeit „MongoDB“</h3>
 
         <p>
-          There is a dependency mismatch to account for in the v1.3.0
-          scaffold: its generated MongoDB range is
-          <code>^6.14.2</code>, while the published Core package declares
-          <code>^5 || ^7</code> as its MongoDB peer range.
-          Align the application's driver version with Core's declared
-          compatibility and the selected driver's Node.js requirements.
+          In der Version 1.3.0 des Scaffolds ist eine Diskrepanz bei den Abhängigkeiten zu berücksichtigen:
+Der generierte Bereich „MongoDB“ lautet
+          <code>^6.14.2</code>, während das veröffentlichte Core-Paket Folgendes angibt:
+          <code>^5 || ^7</code> als dessen MongoDB-Peer-Bereich.
+Stimmen Sie die Treiberversion der Anwendung auf die von Core angegebene
+Kompatibilität und die Node.js-Anforderungen des ausgewählten Treibers ab.
         </p>
 
-        <h3>Review Configuration During An Upgrade</h3>
+        <h3>Überprüfung der Konfiguration während eines Upgrades</h3>
 
         <ul>
           <li>
-            Existing inline schema and model definitions can remain
-            inline.
+            Bestehende Inline-Schema- und Modelldefinitionen können
+inline bleiben.
           </li>
 
           <li>
-            External module references must point to files available
-            to the running application.
+            Verweise auf externe Module müssen auf Dateien verweisen, die
+der laufenden Anwendung zur Verfügung stehen.
           </li>
 
           <li>
-            Schema defaults should use supported literal values or
-            <code>$runtime</code> descriptors.
+            Schema-Standardwerte sollten unterstützte Literalwerte verwenden oder
+            <code>$runtime</code> Deskriptoren.
           </li>
 
           <li>
-            A context default requires its requested value to be
-            available when validation applies the default.
+            Ein Kontextstandardwert setzt voraus, dass der angeforderte Wert
+verfügbar ist, wenn die Validierung den Standardwert anwendet.
           </li>
 
           <li>
-            File logging requires a file transport in an explicitly
-            supplied transport list.
+            Für die Dateiprotokollierung ist ein Dateitransport in einer explizit
+angegebenen Transportliste erforderlich.
           </li>
 
           <li>
-            Adapter dependencies should be reviewed alongside Core,
-            using each package's own release version.
+            Die Abhängigkeiten der Adapter sollten zusammen mit dem Core überprüft werden,
+wobei die jeweilige Release-Version des jeweiligen Pakets zugrunde gelegt werden sollte.
           </li>
         </ul>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Documentation Following The Runtime</h2>
+        <h2>Dokumentation im Anschluss an die Laufzeit</h2>
 
         <p>
-          Documentation work accompanying v1.3.0 covers schema
-          definitions, runtime defaults, multi-tenancy, external
-          configuration modules, AmbitenBootstrapFactory, CLI
-          scaffolding, and advanced usage.
+          Die Dokumentation zu Version 1.3.0 umfasst Schema-
+Definitionen, Laufzeiteinstellungen, Mandantenfähigkeit, externe
+Konfigurationsmodule, die AmbitenBootstrapFactory, CLI-
+Scaffolding sowie fortgeschrittene Anwendungsmöglichkeiten.
         </p>
 
         <p>
-          The examples distinguish the configuration loaded during
-          startup from the state established for an individual request,
-          operation, or background job.
+          In den Beispielen wird zwischen der beim
+Start geladenen Konfiguration und dem für eine einzelne Anfrage,
+einen Vorgang oder einen Hintergrundjob festgelegten Zustand unterschieden.
         </p>
 
         <p>
-          They also clarify how applications establish transaction
-          boundaries, carry tenant identity into worker execution,
-          configure logging, and coordinate resource shutdown.
+          Außerdem wird erläutert, wie Anwendungen Transaktionsgrenzen festlegen,
+die Mandantenidentität in die Ausführung durch die Worker übertragen,
+die Protokollierung konfigurieren und das Herunterfahren von Ressourcen koordinieren.
         </p>
 
         <p>
-          These distinctions help developers connect a working example
-          to the responsibilities of a larger application.
+          Diese Unterscheidungen helfen Entwicklern dabei, ein funktionierendes Beispiel
+mit den Aufgaben einer größeren Anwendung in Verbindung zu bringen.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>From Configuration To Execution</h2>
-
-        <p>
-          An application can begin with a small inline schema, move
-          its definitions into modules as they grow, and connect an
-          external tenant configuration source through bootstrap.
-          Runtime defaults then supply document values from the
-          execution in which those documents are validated.
-        </p>
+        <h2>Von der Konfiguration bis zur Ausführung</h2>
 
         <p>
-          Ambiten Core v1.3.0 makes those choices easier to express
-          while preserving the separation between reusable
-          infrastructure and execution-specific state.
+          Eine Anwendung kann mit einem kleinen Inline-Schema beginnen,
+ihre Definitionen bei zunehmendem Umfang in Module auslagern und eine
+externe Mandantenkonfigurationsquelle über Bootstrap einbinden.
+Laufzeitstandardwerte liefern dann Dokumentwerte aus der
+Ausführung, in der diese Dokumente validiert werden.
         </p>
 
         <p>
-          Explore the
-          <a href="../../docs/">Ambiten documentation</a>,
-          view the
-          <a href="https://github.com/AmbitenHQ/ambiten">source on GitHub</a>,
-          or find
+          Ambiten Core v1.3.0 erleichtert die Darstellung dieser Entscheidungen,
+wobei die Trennung zwischen wiederverwendbarer
+Infrastruktur und ausführungsspezifischem Zustand gewahrt bleibt.
+        </p>
+
+        <p>
+          Entdecken Sie die
+          <a href="../../docs/">Ambiten-Dokumentation</a>,
+ sehen Sie sich die
+          <a href="https://github.com/AmbitenHQ/ambiten">Quelle auf GitHub</a>,
+ oder suchen Sie
           <a href="https://www.npmjs.com/package/@ambiten/core">@ambiten/core on npm</a>.
         </p>
       </div>
@@ -788,36 +783,37 @@ export function resolveTenantConfig(tenantId) {
 
   <footer>
     <div class="footer-main">
-      <a class="brand" href="../../" aria-label="Abinod home">
-        <img src="../../assets/abinod-mark.svg" alt="" />
+      <a class="brand" href="../../" aria-label="Abinod Startseite">
+        <img src="../../assets/abinod-mark.svg" alt="">
         <span>Abinod</span>
       </a>
 
-      <span>Built to create. Built to last.</span>
+      <span>Entwickelt, um zu gestalten. Entwickelt, um Bestand zu haben.</span>
     </div>
 
-    <div class="footer-links" aria-label="Footer navigation">
-      <a href="../../products/">Products</a>
-      <a href="../../ecosystem/">Ecosystem</a>
-      <a href="../../#company">Company</a>
-      <a href="../../about/">About</a>
-      <a href="../../founder/">Founder</a>
-      <a href="../../mission/">Mission</a>
-      <a href="../../brand-essence/">Brand Essence</a>
+    <div class="footer-links" aria-label="Fußzeilennavigation">
+      <a href="../../products/">Produkte</a>
+      <a href="../../ecosystem/">Ökosystem</a>
+      <a href="../../#company">Unternehmen</a>
+      <a href="../../about/">Über</a>
+      <a href="../../founder/">Gründer</a>
+      <a href="../../mission/">Leitbild</a>
+      <a href="../../brand-essence/">Markenessenz</a>
       <a href="../">Blog</a>
-      <a href="../../docs/">Ambiten Docs</a>
-      <a href="../../contact/">Contact</a>
+      <a href="../../docs/">Ambiten-Dokumente</a>
+      <a href="../../contact/">Kontakt</a>
       <a href="../privacy/" aria-current="page">
-        Privacy Policy
+        Datenschutzerklärung
       </a>
     </div>
 
     <p class="legal">
-      Copyright 2026 Abinod. All rights reserved.
+      Copyright 2026 Abinod. Alle Rechte vorbehalten.
     </p>
   </footer>
 
-  <script src="../../assets/site.js" defer></script>
-</body>
+  <script src="../../assets/site.js" defer=""></script>
 
-</html>
+
+  <script src="../../assets/language-switcher.js" defer data-abinod-lang-switcher="script"></script>
+  </body></html>

@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Ambiten Core v1.3.0 introduces external schema and model modules, declarative runtime defaults, tenant resolver modules, and improved bootstrap logging." />
+
+  <meta property="og:title" content="Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod" />
+
+  <meta property="og:description"
+    content="Keep application configuration manageable with external modules, resolve schema defaults during execution, and connect external tenant configuration through bootstrap." />
+
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-10-18" />
+  <meta property="og:image" content="../../assets/og-abinod.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="twitter:title" content="Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod" />
+
+  <meta name="twitter:description"
+    content="External configuration modules, execution-aware schema defaults, tenant resolver integration, and more reliable bootstrap behavior in Ambiten Core v1.3.0." />
+
+  <meta name="twitter:image" content="../../assets/og-abinod.png" />
+
+  <title>
+    Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults | Abinod
+  </title>
+
+  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+<body>
+  <header class="site-header page-header">
+    <a class="brand" href="../../" aria-label="Abinod home">
+      <img src="../../assets/abinod-mark.svg" alt="" />
+      <span>Abinod</span>
+    </a>
+
+    <nav aria-label="Primary navigation">
+      <a href="../../products/">Products</a>
+      <a href="../../ecosystem/">Ecosystem</a>
+      <a href="../../#company">Company</a>
+      <a href="../../about/">About</a>
+      <a href="../../founder/">Founder</a>
+      <a href="../../mission/">Mission</a>
+      <a href="../../brand-essence/">Brand Essence</a>
+      <a href="../">Blog</a>
+      <a href="../../contact/">Contact</a>
+      <a href="../privacy/">Privacy Policy</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="header-button guide-toggle" type="button" data-guide-toggle>
+        Guide
+      </button>
+
+      <button class="header-button" type="button" data-theme-toggle>
+        Dark
+      </button>
+
+      <button class="header-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation"
+        aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article class="blog-article">
+      <header class="blog-article-hero">
+        <p class="eyebrow">Ambiten Release</p>
+
+        <h1>
+          Ambiten Core v1.3.0 — Modular Configuration and Runtime Defaults
+        </h1>
+
+        <p>
+          External schema and model modules, declarative runtime defaults,
+          tenant resolver integration, and more reliable application
+          bootstrap behavior.
+        </p>
+
+        <div class="article-author-block">
+          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56" />
+
+          <div>
+            <span>Written by</span>
+            <strong>Emmanuel Abiodun Nodolomwanyi</strong>
+          </div>
+        </div>
+
+        <div class="article-meta article-meta-rich">
+          <span>Product Update</span>
+
+          <span>
+            <time datetime="2026-10-18">
+              October 18, 2026
+            </time>
+          </span>
+
+          <span>10 min read</span>
+
+          <button class="article-share-button" type="button" data-share-button aria-label="Share this article">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 5l-8 4.5M8 14.5l8 4.5" />
+              <circle cx="18" cy="4" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="20" r="3" />
+            </svg>
+
+            <span>Share</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="blog-article-body">
+        <p class="article-lede">
+          Ambiten Core v1.3.0 improves the connection between application
+          configuration and runtime behavior. Schemas and model options can
+          live in external modules, JSON schemas can declare values that
+          resolve during execution, and bootstrap configuration can connect
+          directly to an external tenant configuration resolver.
+        </p>
+
+        <p>
+          The release also restores preparation of configured log files
+          during startup, updates generated applications to request the
+          current Core release, and addresses package compatibility across
+          ESM, CommonJS, browser builds, and Windows build tooling.
+        </p>
+
+        <p>
+          v1.2.4 clarified how context, models, providers, and tenant
+          infrastructure work together. v1.3.0 builds on those boundaries
+          by making them easier to configure in an application.
+        </p>
+
+        <blockquote>
+          Configuration identifies what an application needs. Modules
+          organize its definitions. Execution context supplies the values
+          that belong to the current operation.
+        </blockquote>
+
+        <hr class="article-divider" />
+
+        <h2>Configuration That Can Grow With The Application</h2>
+
+        <p>
+          Inline configuration remains useful for a small application.
+          A schema with a handful of fields and a model with a collection
+          name can be easy to understand in one JSON file.
+        </p>
+
+        <p>
+          As the application grows, those definitions can occupy most of
+          the configuration file. Reviewing a connection setting or tenant
+          option then requires navigating through an increasingly large
+          document.
+        </p>
+
+        <p>
+          In v1.3.0, the <code>schema</code> and <code>model</code>
+          properties support external module references. Each reference
+          identifies a file and the export that bootstrap should load.
+        </p>
+
+        <p>
+          For example, these properties can appear in
+          <code>ambiten.config.json</code>:
+        </p>
+
+        <pre><code>{
+  "schema": {
+    "path": "./src/schemas/user.schema.mjs",
+    "exportName": "userSchema"
+  },
+  "model": {
+    "path": "./src/models/user.model.mjs",
+    "exportName": "userModelOptions"
+  }
+}</code></pre>
+
+        <p>
+          The schema module exports a schema definition object:
+        </p>
+
+        <pre><code>// src/schemas/user.schema.mjs
+
+export const userSchema = {
+  tenantId: {
+    type: "string",
+    required: true,
+    default: {
+      $runtime: "context",
+      key: "tenantId"
+    }
+  },
+
+  publicId: {
+    type: "string",
+    default: {
+      $runtime: "uuid"
+    }
+  },
+
+  username: {
+    type: "string",
+    required: true
+  },
+
+  email: {
+    type: "string",
+    required: true
+  },
+
+  createdAt: {
+    type: "date",
+    required: true,
+    default: {
+      $runtime: "now"
+    }
+  },
+
+  isDeleted: {
+    type: "boolean",
+    default: false
+  },
+
+  deletedAt: {
+    type: "date"
+  }
+};</code></pre>
+
+        <p>
+          The model module exports model options:
+        </p>
+
+        <pre><code>// src/models/user.model.mjs
+
+export const userModelOptions = {
+  collectionName: "users"
+};</code></pre>
+
+        <p>
+          Bootstrap loads these objects and constructs the schema and model
+          infrastructure. Inline definitions remain supported, so each
+          application can choose the organization that fits its size.
+        </p>
+
+        <p>
+          Paths in a JSON configuration file resolve relative to that
+          file. Paths in a programmatically supplied configuration object
+          resolve relative to the process working directory.
+          Omitting <code>exportName</code> selects the default export.
+        </p>
+
+        <p>
+          The existing <code>features.schemas</code> and
+          <code>features.models</code> values describe scaffolding
+          locations. Runtime module loading is configured through the
+          <code>schema</code> and <code>model</code> properties; it does
+          not scan those feature directories automatically.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Runtime Defaults Resolved Per Document</h2>
+
+        <p>
+          Some document values only make sense when an operation runs.
+          A creation timestamp belongs to the document being created.
+          A generated identifier should be produced for that document.
+          A tenant identifier depends on the active execution.
+        </p>
+
+        <p>
+          v1.3.0 introduces declarative <code>$runtime</code> defaults
+          that express these requirements in a JSON-compatible schema.
+        </p>
+
+        <ul>
+          <li>
+            <code>{ "$runtime": "now" }</code> creates a
+            <code>Date</code> when the default is applied.
+          </li>
+
+          <li>
+            <code>{ "$runtime": "uuid" }</code> generates a UUID.
+          </li>
+
+          <li>
+            <code>{ "$runtime": "context", "key": "tenantId" }</code>
+            reads the tenant identifier from the active
+            <code>AmbitenContext</code>.
+          </li>
+        </ul>
+
+        <p>
+          Context defaults support <code>tenantId</code>,
+          <code>requestId</code>, <code>dbName</code>, and
+          <code>collectionName</code>.
+        </p>
+
+        <p>
+          Using the schema above, validation can resolve the missing
+          values within an execution context:
+        </p>
+
+        <pre><code>import {
+  AmbitenContext,
+  Schema
+} from "@ambiten/core";
+
+import {
+  userSchema
+} from "./schemas/user.schema.mjs";
+
+const schema = Schema.create(userSchema);
+
+const document = {
+  username: "Alice",
+  email: "alice@example.com"
+};
+
+await AmbitenContext.run(
+  { tenantId: "tenant-a" },
+  async () => {
+    await schema.validateAsync(document);
+  }
+);</code></pre>
+
+        <p>
+          This example performs schema validation without a database write.
+          Validation adds the tenant identifier, a UUID, a creation
+          timestamp, and the <code>isDeleted</code> default to the document.
+        </p>
+
+        <p>
+          Defaults apply when a field is <code>undefined</code>.
+          Supplied values remain subject to validation. Object and array
+          defaults are copied for each document, preventing separate
+          documents from sharing the same mutable default value.
+        </p>
+
+        <p>
+          Unsupported runtime directives and context keys are rejected.
+          A context default also fails when its requested value is
+          unavailable during execution.
+        </p>
+
+        <p>
+          The same default contract applies to inline schemas and external
+          schema modules: use JSON-compatible literal values or supported
+          <code>$runtime</code> descriptors.
+        </p>
+
+        <h3>Creation And Deletion Have Different Defaults</h3>
+
+        <p>
+          The example deliberately leaves <code>deletedAt</code>
+          optional and without a default.
+        </p>
+
+        <p>
+          A newly created document has <code>isDeleted: false</code>
+          and no deletion timestamp. A deletion workflow can assign a
+          date when deletion occurs.
+        </p>
+
+        <p>
+          A <code>date</code> field requires a valid
+          <code>Date</code> value when supplied. Assigning
+          <code>false</code> to <code>deletedAt</code> violates that
+          type, while defaulting it to the current time incorrectly
+          records a deletion timestamp at creation.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>External Tenant Configuration Through Bootstrap</h2>
+
+        <p>
+          Ambiten already separates tenant identity from tenant
+          infrastructure. A request resolver identifies the tenant,
+          <code>AmbitenContext</code> carries that identity, and
+          <code>MultiTenantManager</code> resolves the corresponding
+          database resources.
+        </p>
+
+        <p>
+          v1.3.0 extends the JSON configuration path with
+          <code>multiTenant.tenantConfigResolverModule</code>.
+          Applications can now connect an external tenant configuration
+          resolver through the same file-and-export pattern.
+        </p>
+
+        <pre><code>{
+  "multiTenant": {
+    "enabled": true,
+    "tenants": {},
+    "tenantConfigResolverModule": {
+      "path": "./src/tenantResolver.mjs",
+      "exportName": "resolveTenantConfig"
+    },
+    "initOptions": {
+      "lazy": true
+    }
+  }
+}</code></pre>
+
+        <p>
+          The selected export is a function receiving a tenant identifier.
+          It returns tenant configuration, or <code>undefined</code> or
+          <code>null</code> when the tenant cannot be resolved.
+        </p>
+
+        <p>
+          A small application might resolve an explicit set of tenant
+          identifiers from environment-provided connection strings:
+        </p>
+
+        <pre><code>// src/tenantResolver.mjs
+
+const tenantUris = new Map([
+  ["tenant-a", process.env.TENANT_A_MONGODB_URI],
+  ["tenant-b", process.env.TENANT_B_MONGODB_URI]
+]);
+
+export function resolveTenantConfig(tenantId) {
+  const uri = tenantUris.get(tenantId);
+
+  if (!uri) {
+    return undefined;
+  }
+
+  return { uri };
+}</code></pre>
+
+        <p>
+          The function can also be asynchronous when configuration comes
+          from a control database, account service, configuration API, or
+          another application-owned source.
+        </p>
+
+        <p>
+          Resolved configuration contains a MongoDB <code>uri</code>,
+          with optional <code>dbName</code> and
+          <code>metadata</code>. MultiTenantManager manages registration
+          and client state.
+        </p>
+
+        <p>
+          Static tenants and dynamically discovered tenants can coexist.
+          The local registry is checked first; the external resolver
+          supplies configuration for tenants that are not registered.
+        </p>
+
+        <p>
+          Request authentication and authorization remain application
+          responsibilities. Resolving a tenant's database configuration
+          does not establish whether a caller may access that tenant.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Log Files Prepared During Startup</h2>
+
+        <p>
+          Bootstrap logging should make its configured destination
+          available when the application initializes.
+        </p>
+
+        <p>
+          v1.3.0 restores preparation of the parent directory and log
+          file for declaratively configured file transports. Bootstrap
+          resolves the destination, creates missing directories, and
+          opens the file in append mode before constructing the
+          transport.
+        </p>
+
+        <p>
+          An explicit console and rotating-file configuration can look
+          like this:
+        </p>
+
+        <pre><code>{
+  "logger": {
+    "enabled": true,
+    "level": "info",
+    "transportConfigs": [
+      {
+        "type": "console",
+        "options": {}
+      },
+      {
+        "type": "rotating-file",
+        "options": {
+          "filename": "./logs/ambiten.log"
+        }
+      }
+    ]
+  }
+}</code></pre>
+
+        <p>
+          Relative log destinations resolve from the process working
+          directory. Existing file contents are preserved, and a failure
+          to prepare the destination is reported during initialization.
+        </p>
+
+        <p>
+          When logging is enabled and no transports are supplied,
+          bootstrap uses its default console and rotating-file
+          transports. An explicit console-only runtime configuration
+          remains console-only.
+        </p>
+
+        <p>
+          Applications supplying their own logger instance or executable
+          transports retain responsibility for configuring those
+          transports.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Module Loading Follows The Application Runtime</h2>
+
+        <p>
+          External configuration modules use native module loading, with
+          support for selecting exports from ESM and CommonJS modules.
+          File paths are converted to file URLs so Windows paths can
+          participate in the same loading process.
+        </p>
+
+        <p>
+          The examples in this article use <code>.mjs</code> files so
+          their module format is explicit.
+        </p>
+
+        <p>
+          Applications using <code>.ts</code> configuration modules
+          need TypeScript support in the process performing the native
+          import. With <code>tsx</code> installed, a development command
+          can be:
+        </p>
+
+        <pre><code>node --import tsx src/main.ts</code></pre>
+
+        <p>
+          A CommonJS require hook alone does not provide that native
+          import support.
+        </p>
+
+        <p>
+          For compiled deployments, point configuration references at
+          the emitted JavaScript files and include those files in the
+          deployment. Compiling the application does not automatically
+          rewrite module paths inside its JSON configuration.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Stronger Package Boundaries</h2>
+
+        <p>
+          Runtime behavior also depends on how packages are built,
+          installed, and imported.
+        </p>
+
+        <p>
+          This release includes corrections to emitted ESM references,
+          package-boundary compatibility, browser bundle compilation,
+          and Windows package-manager invocation.
+        </p>
+
+        <ul>
+          <li>
+            ESM module references include the file extensions required
+            by Node.js.
+          </li>
+
+          <li>
+            Package integration checks cover CommonJS and ESM
+            consumption across Core, adapter types, adapter runtime,
+            and the Express adapter.
+          </li>
+
+          <li>
+            Those checks also cover the request context used across
+            the tested Core and adapter package boundaries.
+          </li>
+
+          <li>
+            Browser build errors involving Node.js module imports
+            have been addressed.
+          </li>
+
+          <li>
+            Build and package integration scripts handle Windows
+            invocation of pnpm more reliably.
+          </li>
+        </ul>
+
+        <p>
+          These changes support the runtime architecture described in
+          the previous release: an adapter establishes execution
+          context, and application operations must be able to observe
+          that same context through the installed packages.
+        </p>
+
+        <p>
+          Related packages retain their own version numbers.
+          <code>v1.3.0</code> identifies this Core release.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Bootstrapping With The Current Core Release</h2>
+
+        <p>
+          Generated applications now declare:
+        </p>
+
+        <pre><code>{
+  "dependencies": {
+    "@ambiten/core": "latest"
+  }
+}</code></pre>
+
+        <p>
+          During the initial dependency installation, the package manager
+          resolves the version published under the registry's
+          <code>latest</code> tag.
+        </p>
+
+        <p>
+          This makes the scaffold's intent explicit and allows a newly
+          generated application to begin with the current tagged Core
+          release, including when that tag moves beyond the original
+          major-version range.
+        </p>
+
+        <p>
+          The installed dependency tree and lockfile then record the
+          selected version. Existing applications continue to control
+          dependency updates through their normal package-management
+          workflow.
+        </p>
+
+        <p>
+          Interactive scaffold summaries have also been updated to
+          accommodate the revised model configuration structure.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Installing Ambiten Core v1.3.0</h2>
+
+        <p>
+          Install or update Core with:
+        </p>
+
+        <pre><code>pnpm add @ambiten/core@1.3.0</code></pre>
+
+        <p>Or with npm:</p>
+
+        <pre><code>npm install @ambiten/core@1.3.0</code></pre>
+
+        <p>
+          To run the bootstrap CLI supplied by this release:
+        </p>
+
+        <pre><code>pnpm --package=@ambiten/core@1.3.0 dlx ambiten init my-app</code></pre>
+
+        <p>
+          This command selects the v1.3.0 CLI. The generated application's
+          Core dependency still uses <code>latest</code>, which is
+          resolved when its dependencies are installed.
+        </p>
+
+        <h3>Review The Generated MongoDB Dependency</h3>
+
+        <p>
+          There is a dependency mismatch to account for in the v1.3.0
+          scaffold: its generated MongoDB range is
+          <code>^6.14.2</code>, while the published Core package declares
+          <code>^5 || ^7</code> as its MongoDB peer range.
+          Align the application's driver version with Core's declared
+          compatibility and the selected driver's Node.js requirements.
+        </p>
+
+        <h3>Review Configuration During An Upgrade</h3>
+
+        <ul>
+          <li>
+            Existing inline schema and model definitions can remain
+            inline.
+          </li>
+
+          <li>
+            External module references must point to files available
+            to the running application.
+          </li>
+
+          <li>
+            Schema defaults should use supported literal values or
+            <code>$runtime</code> descriptors.
+          </li>
+
+          <li>
+            A context default requires its requested value to be
+            available when validation applies the default.
+          </li>
+
+          <li>
+            File logging requires a file transport in an explicitly
+            supplied transport list.
+          </li>
+
+          <li>
+            Adapter dependencies should be reviewed alongside Core,
+            using each package's own release version.
+          </li>
+        </ul>
+
+        <hr class="article-divider" />
+
+        <h2>Documentation Following The Runtime</h2>
+
+        <p>
+          Documentation work accompanying v1.3.0 covers schema
+          definitions, runtime defaults, multi-tenancy, external
+          configuration modules, AmbitenBootstrapFactory, CLI
+          scaffolding, and advanced usage.
+        </p>
+
+        <p>
+          The examples distinguish the configuration loaded during
+          startup from the state established for an individual request,
+          operation, or background job.
+        </p>
+
+        <p>
+          They also clarify how applications establish transaction
+          boundaries, carry tenant identity into worker execution,
+          configure logging, and coordinate resource shutdown.
+        </p>
+
+        <p>
+          These distinctions help developers connect a working example
+          to the responsibilities of a larger application.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>From Configuration To Execution</h2>
+
+        <p>
+          An application can begin with a small inline schema, move
+          its definitions into modules as they grow, and connect an
+          external tenant configuration source through bootstrap.
+          Runtime defaults then supply document values from the
+          execution in which those documents are validated.
+        </p>
+
+        <p>
+          Ambiten Core v1.3.0 makes those choices easier to express
+          while preserving the separation between reusable
+          infrastructure and execution-specific state.
+        </p>
+
+        <p>
+          Explore the
+          <a href="../../docs/">Ambiten documentation</a>,
+          view the
+          <a href="https://github.com/AmbitenHQ/ambiten">source on GitHub</a>,
+          or find
+          <a href="https://www.npmjs.com/package/@ambiten/core">@ambiten/core on npm</a>.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <a class="brand" href="../../" aria-label="Abinod home">
+        <img src="../../assets/abinod-mark.svg" alt="" />
+        <span>Abinod</span>
+      </a>
+
+      <span>Built to create. Built to last.</span>
+    </div>
+
+    <div class="footer-links" aria-label="Footer navigation">
+      <a href="../../products/">Products</a>
+      <a href="../../ecosystem/">Ecosystem</a>
+      <a href="../../#company">Company</a>
+      <a href="../../about/">About</a>
+      <a href="../../founder/">Founder</a>
+      <a href="../../mission/">Mission</a>
+      <a href="../../brand-essence/">Brand Essence</a>
+      <a href="../">Blog</a>
+      <a href="../../docs/">Ambiten Docs</a>
+      <a href="../../contact/">Contact</a>
+      <a href="../privacy/" aria-current="page">
+        Privacy Policy
+      </a>
+    </div>
+
+    <p class="legal">
+      Copyright 2026 Abinod. All rights reserved.
+    </p>
+  </footer>
+
+  <script src="../../assets/site.js" defer></script>
+</body>
+
+</html>

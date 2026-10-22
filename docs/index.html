@@ -1,111 +1,104 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Ambiten documentation and npm installation entry point from Abinod."
-    />
-    <meta property="og:title" content="Ambiten Docs | Abinod" />
-    <meta
-      property="og:description"
-      content="Abinod builds infrastructure products around clarity, reliable execution, and long-term maintainability."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="../assets/og-abinod.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ambiten Docs | Abinod" />
-    <meta
-      name="twitter:description"
-      content="Abinod builds infrastructure products around clarity, reliable execution, and long-term maintainability."
-    />
-    <meta name="twitter:image" content="../assets/og-abinod.png" />
-    <title>Ambiten Docs | Abinod</title>
+<html lang="de"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ambiten – Dokumentation und Einstiegspunkt für die npm-Installation aus Abinod.">
+    <meta property="og:title" content="Ambiten-Dokumente | Abinod">
+    <meta property="og:description" content="Abinod entwickelt Infrastrukturprodukte, bei denen Klarheit, zuverlässige Umsetzung und langfristige Wartbarkeit im Vordergrund stehen.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="../assets/og-abinod.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ambiten-Dokumente | Abinod">
+    <meta name="twitter:description" content="Abinod entwickelt Infrastrukturprodukte, bei denen Klarheit, zuverlässige Umsetzung und langfristige Wartbarkeit im Vordergrund stehen.">
+    <meta name="twitter:image" content="../assets/og-abinod.png">
+    <title>Ambiten-Dokumente | Abinod</title>
     <style>
       body {
-        margin: 0;
-        display: grid;
-        min-height: 100vh;
-        place-items: center;
-        color: #080f14;
-        background: #f5f3ef;
+ margin: 0;
+ display: grid;
+ min-height: 100vh;
+ place-items: center;
+ color: #080f14;
+ background: #f5f3ef;
         font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
-      }
+ Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+ „Segoe UI“, sans-serif;
+ }
 
       main {
-        width: min(680px, calc(100% - 40px));
-      }
+ width: min(680px, calc(100% - 40px));
+ }
 
-      a {
-        color: inherit;
-      }
+ a {
+ color: inherit;
+ }
 
-      .eyebrow {
-        color: #d4af37;
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-      }
+ .eyebrow {
+ color: #d4af37;
+        Schriftgröße: 0,78 rem;
+ Schriftstärke: 800;
+ Zeichenabstand: 0,2 em;
+ Textumwandlung: Großbuchstaben;
+ }
 
       h1 {
-        margin: 12px 0;
-        font-size: clamp(2.4rem, 7vw, 4.4rem);
-        line-height: 1;
-      }
+ margin: 12px 0;
+ font-size: clamp(2,4rem, 7vw, 4,4rem);
+ line-height: 1;
+ }
 
-      p {
-        color: #374151;
-        font-size: 1.06rem;
-        line-height: 1.7;
-      }
+ p {
+ color: #374151;
+        Schriftgröße: 1,06 rem;
+ Zeilenhöhe: 1,7;
+ }
 
-      code {
-        display: inline-block;
-        border: 1px solid rgba(8, 15, 20, 0.12);
+ code {
+ Darstellung: inline-block;
+ Rahmen: 1px durchgehend rgba(8, 15, 20, 0,12);
         border-radius: 6px;
-        padding: 12px 14px;
-        color: #080f14;
-        background: rgba(255, 255, 255, 0.68);
-        font-size: 0.96rem;
-      }
+ padding: 12px 14px;
+ color: #080f14;
+ background: rgba(255, 255, 255, 0.68);
+        font-size: 0,96 rem;
+ }
 
-      .button {
-        display: inline-flex;
-        min-height: 46px;
-        align-items: center;
-        justify-content: center;
-        margin-top: 18px;
+ .button {
+ display: inline-flex;
+ min-height: 46px;
+ align-items: center;
+ justify-content: center;
+ margin-top: 18px;
         border-radius: 3px;
-        padding: 0 22px;
-        color: #111;
-        background: linear-gradient(135deg, #f1d673, #d4af37);
-        font-size: 0.78rem;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        text-transform: uppercase;
-      }
+ padding: 0 22px;
+ color: #111;
+ background: linear-gradient(135deg, #f1d673, #d4af37);
+        font-size: 0,78 rem;
+ font-weight: 900;
+ letter-spacing: 0,08 em;
+ text-decoration: none;
+ text-transform: uppercase;
+ }
     </style>
+  <link rel="alternate" hreflang="de-DE" href="https://www.abinod.de/docs/"><link rel="alternate" hreflang="en" href="https://www.abinod.com/docs/"><link rel="alternate" hreflang="x-default" href="https://www.abinod.com/docs/"><link rel="canonical" href="https://www.abinod.de/docs/">  <link rel="stylesheet" href="../assets/language-switcher.css" data-abinod-lang-switcher="style">
   </head>
   <body>
     <main>
-      <p class="eyebrow">Abinod product documentation</p>
-      <h1>Ambiten Docs</h1>
+      <p class="eyebrow">Abinod – Produktdokumentation</p>
+      <h1>Ambiten-Dokumente</h1>
       <p>
-        Ambiten is the first Abinod product: a context-aware runtime for modern
-        multi-tenant applications. Install it from npm, then connect the full
-        documentation experience here as the docs build becomes part of this
-        website.
+        Ambiten ist das erste Produkt der Reihe Abinod: eine kontextbezogene Laufzeitumgebung für moderne
+Multi-Tenant-Anwendungen. Installieren Sie es über npm und greifen Sie anschließend hier auf die vollständige
+Dokumentation zu, sobald die Dokumentation in diese
+Website integriert ist.
       </p>
       <p><code>npm install ambiten</code></p>
-      <a class="button" href="https://www.npmjs.com/settings/ambiten/packages">View on npm</a>
-      <a class="button" href="https://docs.ambiten.dev/">View docs</a>
-      <a class="button" href="../">Back to Abinod</a>
-      <p>Need help with Ambiten? Email <a href="mailto:support@abinod.com">support@abinod.com</a>.</p>
+      <a class="button" href="https://www.npmjs.com/settings/ambiten/packages">Auf npm anzeigen</a>
+      <a class="button" href="https://docs.ambiten.dev/">Dokumente anzeigen</a>
+      <a class="button" href="../">Zurück zu Abinod</a>
+      <p>Benötigen Sie Hilfe bei Ambiten? Senden Sie uns eine E-Mail <a href="mailto:support@abinod.com">support@abinod.com</a>.</p>
     </main>
-  </body>
-</html>
+  
+
+  <script src="../assets/language-switcher.js" defer data-abinod-lang-switcher="script"></script>
+  </body></html>

@@ -1,73 +1,66 @@
 <!doctype html>
-<html lang="en">
+<html lang="de"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Ambiten Core v1.2.4 optimiert die Kontextbindung, ModelContext, die mandantenorientierte Infrastrukturauflösung, bereichsgebundene Clients sowie die Teilnahme an Transaktionen in der gesamten Ambiten-Laufzeitumgebung.">
 
-  <meta name="description"
-    content="Ambiten Core v1.2.4 refines context binding, ModelContext, tenant-aware infrastructure resolution, scoped clients, and transaction participation across the Ambiten runtime." />
+  <meta property="og:title" content="Ambiten Core v1.2.4 – Verbesserungen bei der Kontextbindung und der Laufzeitauflösung | Abinod">
 
-  <meta property="og:title"
-    content="Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements | Abinod" />
+  <meta property="og:description" content="Ein genauerer Blick auf die Verbesserungen der Laufzeitfunktionen in Ambiten Core v1.2.4, darunter Kontextbindung, ModelContext, AmbitenClient, Mandanteninfrastruktur und Transaktionskontinuität.">
 
-  <meta property="og:description"
-    content="A closer look at the runtime refinements in Ambiten Core v1.2.4, including context binding, ModelContext, AmbitenClient, tenant infrastructure, and transaction continuity." />
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-09-15">
+  <meta property="og:image" content="../../assets/og-abinod.png">
 
-  <meta property="og:type" content="article" />
-  <meta property="article:published_time" content="2026-09-15" />
-  <meta property="og:image" content="../../assets/og-abinod.png" />
+  <meta name="twitter:card" content="summary_large_image">
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ambiten Core v1.2.4 – Verbesserungen bei der Kontextbindung und der Laufzeitauflösung | Abinod">
 
-  <meta name="twitter:title"
-    content="Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements | Abinod" />
+  <meta name="twitter:description" content="Ambiten Core v1.2.4 schärft die Grenzen in der Laufzeit zwischen Ausführungskontext, Modelloperationen, Mandanteninfrastruktur, Datenbankanbietern und Transaktionsbeteiligung.">
 
-  <meta name="twitter:description"
-    content="Ambiten Core v1.2.4 sharpens the runtime boundaries between execution context, model operations, tenant infrastructure, database providers, and transaction participation." />
-
-  <meta name="twitter:image" content="../../assets/og-abinod.png" />
+  <meta name="twitter:image" content="../../assets/og-abinod.png">
 
   <title>
-    Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements | Abinod
+    Ambiten Core v1.2.4 – Verbesserungen bei der Kontextbindung und der Laufzeitauflösung | Abinod
   </title>
 
-  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml">
 
-  <link rel="stylesheet" href="../../styles.css" />
-</head>
+  <link rel="stylesheet" href="../../styles.css">
+<link rel="alternate" hreflang="de-DE" href="https://www.abinod.de/blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/"><link rel="alternate" hreflang="en" href="https://www.abinod.com/blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/"><link rel="alternate" hreflang="x-default" href="https://www.abinod.com/blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/"><link rel="canonical" href="https://www.abinod.de/blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/">  <link rel="stylesheet" href="../../assets/language-switcher.css" data-abinod-lang-switcher="style">
+  </head>
 
 <body>
   <header class="site-header page-header">
-    <a class="brand" href="../../" aria-label="Abinod home">
-      <img src="../../assets/abinod-mark.svg" alt="" />
+    <a class="brand" href="../../" aria-label="Abinod Startseite">
+      <img src="../../assets/abinod-mark.svg" alt="">
       <span>Abinod</span>
     </a>
 
-    <nav aria-label="Primary navigation">
-      <a href="../../products/">Products</a>
-      <a href="../../ecosystem/">Ecosystem</a>
-      <a href="../../#company">Company</a>
-      <a href="../../about/">About</a>
-      <a href="../../founder/">Founder</a>
-      <a href="../../mission/">Mission</a>
-      <a href="../../brand-essence/">Brand Essence</a>
+    <nav aria-label="Hauptnavigation">
+      <a href="../../products/">Produkte</a>
+      <a href="../../ecosystem/">Ökosystem</a>
+      <a href="../../#company">Unternehmen</a>
+      <a href="../../about/">Über</a>
+      <a href="../../founder/">Gründer</a>
+      <a href="../../mission/">Leitbild</a>
+      <a href="../../brand-essence/">Markenessenz</a>
       <a href="../">Blog</a>
-      <a href="../../contact/">Contact</a>
-      <a href="../privacy/">Privacy Policy</a>
+      <a href="../../contact/">Kontakt</a>
+      <a href="../privacy/">Datenschutzerklärung</a>
     </nav>
 
     <div class="header-actions">
-      <button class="header-button guide-toggle" type="button" data-guide-toggle>
-        Guide
+      <button class="header-button guide-toggle" type="button" data-guide-toggle="">
+        Leitfaden
       </button>
 
-      <button class="header-button" type="button" data-theme-toggle>
-        Dark
+      <button class="header-button" type="button" data-theme-toggle="">
+        Dunkel
       </button>
 
-      <button class="header-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation"
-        aria-expanded="false">
+      <button class="header-button menu-toggle" type="button" data-menu-toggle="" aria-label="Navigation öffnen" aria-expanded="false">
         <span></span>
       </button>
     </div>
@@ -76,92 +69,92 @@
   <main>
     <article class="blog-article">
       <header class="blog-article-hero">
-        <p class="eyebrow">Ambiten Release</p>
+        <p class="eyebrow">Ambiten – Veröffentlichung</p>
 
         <h1>
-          Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements
+          Ambiten Core v1.2.4 – Verbesserungen bei der Kontextbindung und der Laufzeitauflösung
         </h1>
 
         <p>
-          Ambiten Core v1.2.4 sharpens the boundaries between execution
-          context, model operations, database providers, tenant
-          infrastructure, client resolution, and transaction participation.
+          Ambiten Core v1.2.4 schärft die Abgrenzungen zwischen Ausführungskontext,
+Modelloperationen, Datenbankanbietern, Mandanteninfrastruktur,
+Client-Auflösung und Transaktionsbeteiligung.
         </p>
 
         <div class="article-author-block">
-          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56" />
+          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56">
 
           <div>
-            <span>Written by</span>
+            <span>Verfasst von</span>
             <strong>Emmanuel Abiodun Nodolomwanyi</strong>
           </div>
         </div>
 
         <div class="article-meta article-meta-rich">
-          <span>Product Update</span>
+          <span>Produktaktualisierung</span>
 
           <span>
             <time datetime="2026-09-15">
-              September 15, 2026
+              15. September 2026
             </time>
           </span>
 
-          <span>8 min read</span>
+          <span>8 Minuten Lesezeit</span>
 
-          <button class="article-share-button" type="button" data-share-button aria-label="Share this article">
+          <button class="article-share-button" type="button" data-share-button="" aria-label="Diesen Artikel teilen">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 5l-8 4.5M8 14.5l8 4.5" />
-              <circle cx="18" cy="4" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="20" r="3" />
+              <path d="M16 5l-8 4.5M8 14.5l8 4.5"></path>
+              <circle cx="18" cy="4" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="20" r="3"></circle>
             </svg>
 
-            <span>Share</span>
+            <span>Teilen</span>
           </button>
         </div>
       </header>
 
       <div class="blog-article-body">
         <p class="article-lede">
-          Ambiten Core v1.2.4 is a runtime refinement release focused on
-          making execution behavior more explicit. It strengthens the
-          relationship between AmbitenContext, ModelContext, AmbitenModel,
-          AmbitenSchema, AmbitenClient, tenant infrastructure, and
-          transactions while keeping the application-facing programming
-          model approachable.
+          Ambiten Core v1.2.4 ist eine Version zur Verfeinerung der Laufzeitumgebung, deren Schwerpunkt darauf liegt,
+das Ausführungsverhalten expliziter zu gestalten. Sie stärkt die
+Beziehungen zwischen AmbitenContext, ModelContext, AmbitenModel,
+AmbitenSchema, AmbitenClient, der Mandanteninfrastruktur und
+Transaktionen, während das anwendungsorientierte Programmiermodell
+zugänglich bleibt.
         </p>
 
         <p>
-          The work behind this release is not about adding complexity for its
-          own sake. It is about making the existing runtime easier to reason
-          about as Ambiten moves between direct MongoDB usage and more
-          advanced multi-tenant, transaction-aware systems.
+          Bei der Arbeit an dieser Version geht es nicht darum, die Komplexität um ihrer
+eigenen willen zu erhöhen. Vielmehr soll die bestehende Laufzeitumgebung leichter nachvollziehbar
+gemacht werden, während Ambiten den Übergang von der direkten Nutzung von MongoDB hin zu
+fortgeschritteneren mandantenfähigen, transaktionsorientierten Systemen vollzieht.
         </p>
 
         <p>
-          A central part of that work has been clarifying which layer owns
-          which responsibility.
+          Ein zentraler Bestandteil dieser Arbeit bestand darin, zu klären, welche Ebene für
+ welche Aufgabe zuständig ist.
         </p>
 
         <blockquote>
-          Context carries execution. Models bind execution to operations.
-          Infrastructure determines where those operations run.
+          Der Kontext bestimmt die Ausführung. Modelle verknüpfen die Ausführung mit Operationen.
+Die Infrastruktur legt fest, wo diese Operationen ausgeführt werden.
         </blockquote>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>A Clearer Runtime Model</h2>
+        <h2>Ein übersichtlicheres Laufzeitmodell</h2>
 
         <p>
-          One of the most important refinements in v1.2.4 is a clearer
-          distinction between full execution state and model-operation state.
+          Eine der wichtigsten Verbesserungen in Version 1.2.4 ist eine klarere
+ Unterscheidung zwischen dem vollständigen Ausführungszustand und dem Modellbetriebszustand.
         </p>
 
         <p>
-          AmbitenContext carries the state associated with an active
-          execution. That may include tenant identity, request identity,
-          database scope, transaction sessions, logging metadata,
-          instrumentation state, and runtime controls.
+          AmbitenContext enthält den mit einer aktiven
+Ausführung verbundenen Status. Dazu können die Mandantenidentität, die Anforderungsidentität,
+der Datenbankbereich, Transaktionssitzungen, Protokollierungsmetadaten,
+der Instrumentierungsstatus sowie Laufzeitsteuerelemente gehören.
         </p>
 
         <pre><code>AmbitenContextState
@@ -183,23 +176,23 @@ AmbitenClient
 MongoDB</code></pre>
 
         <p>
-          ModelContext serves a different purpose. It represents the
-          persistence-facing state required by a particular model operation.
+          ModelContext dient einem anderen Zweck. Es repräsentiert den
+ für die Persistenz relevanten Zustand, der für eine bestimmte Modelloperation erforderlich ist.
         </p>
 
         <p>
-          Rather than asking every schema, middleware function, or database
-          provider to reconstruct the active runtime context independently,
-          AmbitenModel creates one effective operation context.
+          Anstatt jedes Schema, jede Middleware-Funktion oder jeden Datenbankanbieter
+dazu aufzufordern, den aktiven Laufzeitkontext eigenständig neu aufzubauen,
+erstellt AmbitenModel einen einzigen effektiven Ausführungskontext.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>From AmbitenContext To ModelContext</h2>
+        <h2>Von „AmbitenContext“ zu „ModelContext“</h2>
 
         <p>
-          During model execution, Ambiten resolves the effective ModelContext
-          using a deterministic precedence.
+          Während der Modellausführung ermittelt Ambiten den effektiven ModelContext
+ unter Verwendung einer deterministischen Prioritätsregel.
         </p>
 
         <pre><code>explicit operation context
@@ -211,25 +204,25 @@ model defaults
 Effective ModelContext</code></pre>
 
         <p>
-          This means execution state can be established once at the runtime
-          boundary and then carried naturally into persistence operations.
+          Das bedeutet, dass der Ausführungsstatus einmalig an der Laufzeitgrenze ermittelt
+und anschließend nahtlos in die Persistenzvorgänge übernommen werden kann.
         </p>
 
         <p>
-          A model operation such as:
+          Ein Modellvorgang wie beispielsweise:
         </p>
 
         <pre><code>await UserModel.find({});</code></pre>
 
         <p>
-          can participate in tenant-aware or transaction-aware execution
-          without requiring every service in the application to manually
-          forward tenant identifiers, request identifiers, database names,
-          or MongoDB sessions.
+          kann an einer mandanten- oder transaktionsorientierten Ausführung teilnehmen,
+ohne dass jeder Dienst in der Anwendung manuell
+Mandantenkennungen, Anforderungskennungen, Datenbanknamen
+oder MongoDB-Sitzungen weiterleiten muss.
         </p>
 
         <p>
-          The distinction is simple:
+          Der Unterschied ist einfach:
         </p>
 
         <pre><code>AmbitenContextState
@@ -239,27 +232,27 @@ ModelContext
 = model-operation-facing state</code></pre>
 
         <p>
-          They are not competing context systems. ModelContext is the
-          persistence-facing projection of the execution state required by
-          the model runtime.
+          Es handelt sich nicht um konkurrierende Kontextsysteme. „ModelContext“ ist die
+auf die Persistenz ausgerichtete Projektion des Ausführungszustands, die von
+der Modell-Laufzeitumgebung benötigt wird.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>AmbitenClient Remains A First-Class Direct API</h2>
-
-        <p>
-          AmbitenClient has also received clearer positioning in the runtime
-          architecture.
-        </p>
+        <h2>AmbitenClient bleibt eine erstklassige Direkt-API</h2>
 
         <p>
-          It should not be thought of only as an internal component hidden
-          beneath AmbitenModel.
+          AmbitenClient hat zudem eine klarere Positionierung innerhalb der Laufzeitarchitektur
+erhalten.
         </p>
 
         <p>
-          Direct use remains intentional:
+          Man sollte es nicht lediglich als eine interne Komponente betrachten, die
+unterhalb von AmbitenModel verborgen ist.
+        </p>
+
+        <p>
+          Die direkte Verwendung ist weiterhin beabsichtigt:
         </p>
 
         <pre><code>Application
@@ -269,14 +262,14 @@ AmbitenClient
 MongoDB</code></pre>
 
         <p>
-          This makes Ambiten suitable for small applications, scripts,
-          educational examples, live coding sessions, migrations, internal
-          tooling, and direct database workflows.
+          Dadurch eignet sich Ambiten für kleine Anwendungen, Skripte,
+Lehrbeispiele, Live-Coding-Sitzungen, Migrationen, interne
+Tools sowie direkte Datenbank-Workflows.
         </p>
 
         <p>
-          As an application grows, the same client can participate beneath
-          the model runtime:
+          Wenn eine Anwendung wächst, kann derselbe Client im Rahmen
+der Modell-Laufzeitumgebung mitwirken:
         </p>
 
         <pre><code>AmbitenContext
@@ -292,22 +285,22 @@ AmbitenClient
 MongoDB</code></pre>
 
         <p>
-          That progressive model is deliberate. A developer does not need to
-          understand the complete multi-tenant runtime before performing a
-          useful database operation.
+          Dieses schrittweise Modell ist bewusst so gewählt. Ein Entwickler muss nicht
+die gesamte Multi-Tenant-Laufzeitumgebung verstehen, um eine
+sinnvolle Datenbankoperation durchzuführen.
         </p>
 
         <blockquote>
-          Start directly. Add structure when the application needs it.
+          Fangen Sie direkt an. Fügen Sie Struktur hinzu, wenn die Anwendung dies erfordert.
         </blockquote>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>More Explicit Database Resolution</h2>
+        <h2>Eindeutigere Datenbankauflösung</h2>
 
         <p>
-          AmbitenClient database resolution now has a clearly documented
-          order.
+          Die Auflösung der AmbitenClient-Datenbank folgt nun einer klar dokumentierten
+Reihenfolge.
         </p>
 
         <pre><code>1. Explicit ctx.db
@@ -321,13 +314,13 @@ MongoDB</code></pre>
 5. Configured or default database</code></pre>
 
         <p>
-          This keeps explicit operation state authoritative while still
-          supporting tenant-aware infrastructure and configured defaults.
+          Dadurch bleibt der explizite Betriebsstatus maßgeblich, während gleichzeitig
+eine mandantenorientierte Infrastruktur und konfigurierte Standardwerte unterstützt werden.
         </p>
 
         <p>
-          For tenant-aware execution, AmbitenClient can resolve the correct
-          MongoDB client through its configured tenant resolver.
+          Für eine mandantenorientierte Ausführung kann AmbitenClient den richtigen
+MongoDB-Client über den konfigurierten Mandanten-Resolver ermitteln.
         </p>
 
         <pre><code>ModelContext.tenantId
@@ -339,17 +332,17 @@ MongoClient
 Tenant Database</code></pre>
 
         <p>
-          The application does not need to know how that client was
-          discovered, registered, or activated.
+          Die Anwendung muss nicht wissen, wie dieser Client
+erfasst, registriert oder aktiviert wurde.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Tenant Identity And Tenant Infrastructure Stay Separate</h2>
+        <h2>Die Identität des Mandanten und die Infrastruktur des Mandanten bleiben voneinander getrennt</h2>
 
         <p>
-          v1.2.4 continues to reinforce an important architectural
-          separation in Ambiten.
+          Mit Version 1.2.4 wird eine wichtige architektonische
+Trennung in Ambiten weiter verstärkt.
         </p>
 
         <pre><code>TenantResolver
@@ -365,24 +358,24 @@ AmbitenClient
 → provides MongoDB capability</code></pre>
 
         <p>
-          Resolving a tenant from an HTTP header, token, subdomain, queue
-          message, or custom resolver is not the same thing as resolving the
-          MongoDB resources that belong to that tenant.
+          Das Auflösen eines Mandanten anhand eines HTTP-Headers, eines Tokens, einer Subdomain, einer Warteschlangen-
+Nachricht oder eines benutzerdefinierten Resolvers ist nicht dasselbe wie das Auflösen der
+MongoDB-Ressourcen, die zu diesem Mandanten gehören.
         </p>
 
         <p>
-          Keeping those responsibilities separate allows MultiTenantManager
-          to handle registered tenants, dynamic discovery, lazy activation,
-          client reuse, and tenant runtime state independently from the
-          framework request.
+          Durch die Trennung dieser Aufgaben kann der MultiTenantManager
+die Verwaltung registrierter Mandanten, die dynamische Erkennung, die verzögerte Aktivierung,
+die Wiederverwendung von Clients sowie den Laufzeitstatus der Mandanten unabhängig von der
+Framework-Anfrage handhaben.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Scoped Client Execution</h2>
+        <h2>Ausführung von Clients in einem begrenzten Bereich</h2>
 
         <p>
-          AmbitenClient continues to support explicit infrastructure scopes.
+          AmbitenClient unterstützt weiterhin explizite Infrastrukturbereiche.
         </p>
 
         <pre><code>const tenantClient =
@@ -398,29 +391,29 @@ const scopedClient =
   });</code></pre>
 
         <p>
-          These APIs create scoped provider views over the base client rather
-          than unrelated MongoDB connection pools.
+          Diese APIs erstellen bereichsbezogene Anbieteransichten über den Basis-Client, anstatt
+auf nicht damit in Zusammenhang stehende MongoDB-Verbindungspools zurückzugreifen.
         </p>
 
         <p>
-          Explicit operation context remains authoritative where supplied,
-          while the predefined scope acts as a fallback for the scoped
-          client.
+          Ein explizit angegebener Ausführungskontext ist, sofern vorhanden, weiterhin maßgebend,
+während der vordefinierte Geltungsbereich als Ausweichlösung für den
+Client mit begrenztem Geltungsbereich dient.
         </p>
 
         <p>
-          The older mutable database switching path remains available through
-          <code>useDatabase()</code>, but scoped client APIs provide a safer
-          model for concurrent and request-aware applications.
+          Der ältere, veränderbare Datenbankumschaltpfad bleibt weiterhin verfügbar über
+          <code>useDatabase()</code>, doch Client-APIs mit begrenzter Gültigkeitsbereich bieten ein sichereres
+Modell für parallel laufende und anforderungsorientierte Anwendungen.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Transaction State Follows The Execution</h2>
+        <h2>Der Transaktionsstatus richtet sich nach der Ausführung</h2>
 
         <p>
-          Transaction handling is another area where responsibility is now
-          documented more precisely.
+          Die Transaktionsabwicklung ist ein weiterer Bereich, in dem die Zuständigkeiten nun
+genauer dokumentiert sind.
         </p>
 
         <pre><code>Transaction Boundary
@@ -436,7 +429,7 @@ ModelContext.session
 Participating Operations</code></pre>
 
         <p>
-          The transaction boundary owns the transaction lifecycle.
+          Die Transaktionsgrenze bestimmt den Lebenszyklus der Transaktion.
         </p>
 
         <pre><code>start
@@ -445,31 +438,31 @@ rollback
 completion</code></pre>
 
         <p>
-          Models participate in the active transaction. They do not
-          independently commit or roll back the surrounding transaction.
+          Modelle sind an der aktiven Transaktion beteiligt. Sie führen keine
+ eigenständige Festschreibung oder Rücknahme der übergeordneten Transaktion durch.
         </p>
 
         <p>
-          This allows application services to remain free from manual MongoDB
-          session plumbing while still giving the runtime a clear atomic
-          boundary.
+          Dadurch können Anwendungsdienste von manuellen MongoDB
+-Sitzungskonfigurationen verschont bleiben, während der Laufzeitumgebung dennoch eine klare atomare
+Grenze gesetzt wird.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Two Ways To Establish Transaction Boundaries</h2>
+        <h2>Zwei Möglichkeiten, Transaktionsgrenzen festzulegen</h2>
 
         <p>
-          Ambiten supports both explicit workflow transactions and
-          adapter-managed execution-wide transactions.
+          Ambiten unterstützt sowohl explizite Workflow-Transaktionen als auch
+vom Adapter verwaltete, die gesamte Ausführung umfassende Transaktionen.
         </p>
 
         <p>
-          A focused application workflow can use:
+          Ein zielgerichteter Anwendungsworkflow kann Folgendes nutzen:
         </p>
 
         <pre><code>await AmbitenContext.withTransaction(
-  async () => {
+  async () =&gt; {
     await UserModel.create({
       name: "Alice"
     });
@@ -481,35 +474,35 @@ completion</code></pre>
 );</code></pre>
 
         <p>
-          An adapter can instead establish a transaction around the supported
-          execution lifecycle:
+          Ein Adapter kann stattdessen eine Transaktion rund um den unterstützten
+Ausführungslebenszyklus einrichten:
         </p>
 
         <pre><code>enableTransactions: true</code></pre>
 
         <p>
-          These are alternative transaction boundaries rather than two layers
-          that every application must combine.
+          Es handelt sich hierbei eher um alternative Transaktionsgrenzen als um zwei Ebenen,
+die jede Anwendung miteinander kombinieren muss.
         </p>
 
         <p>
-          The important rule remains that participating Ambiten operations
-          share the active transaction session. Arbitrary raw MongoDB calls
-          or external services should not be assumed to join that transaction
-          automatically.
+          Es gilt weiterhin die wichtige Regel, dass die beteiligten Ambiten-Vorgänge
+sich die aktive Transaktionssitzung teilen. Es sollte nicht davon ausgegangen werden, dass beliebige MongoDB-Rufanrufe
+oder externe Dienste automatisch in diese Transaktion
+einbezogen werden.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Schema Behavior Is Static, Execution Is Dynamic</h2>
+        <h2>Das Schema-Verhalten ist statisch, die Ausführung ist dynamisch</h2>
 
         <p>
-          AmbitenSchema also fits more clearly into the refined runtime
-          model.
+          AmbitenSchema fügt sich zudem besser in das weiterentwickelte Laufzeitmodell
+ein.
         </p>
 
         <p>
-          The schema defines structure and persistence-oriented behavior:
+          Das Schema definiert die Struktur und das persistenzorientierte Verhalten:
         </p>
 
         <pre><code>document structure
@@ -521,8 +514,8 @@ lifecycle configuration
 persistence behavior</code></pre>
 
         <p>
-          Runtime state reaches schema and middleware behavior through the
-          effective ModelContext created for the model operation.
+          Der Laufzeitzustand greift über den
+für die Modelloperation erstellten effektiven ModelContext auf das Schema und das Middleware-Verhalten zu.
         </p>
 
         <pre><code>AmbitenContext
@@ -534,22 +527,22 @@ Effective ModelContext
 AmbitenSchema / Middleware</code></pre>
 
         <p>
-          The schema itself does not become tenant-specific or
-          request-specific.
+          Das Schema selbst wird weder mandantenspezifisch noch
+anfragespezifisch.
         </p>
 
         <blockquote>
-          Static definition. Dynamic execution.
+          Statische Definition. Dynamische Ausführung.
         </blockquote>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>One Request, End To End</h2>
+        <h2>Eine Anfrage, von Anfang bis Ende</h2>
 
         <p>
-          The accompanying documentation now follows a request through the
-          runtime with the same responsibility boundaries used internally by
-          Ambiten.
+          Die zugehörige Dokumentation verfolgt nun eine Anfrage durch die
+Laufzeitumgebung unter Verwendung derselben Zuständigkeitsgrenzen, die intern von
+Ambiten verwendet werden.
         </p>
 
         <pre><code>HTTP Request
@@ -583,18 +576,18 @@ Transaction Completion if active
 Framework Response</code></pre>
 
         <p>
-          The goal is not to make a simple request look complicated. The goal
-          is to make the hidden responsibilities visible so that each layer
-          remains understandable as the application grows.
+          Das Ziel besteht nicht darin, eine einfache Anforderung kompliziert erscheinen zu lassen. Das Ziel
+ist es, die verborgenen Verantwortlichkeiten sichtbar zu machen, damit jede Schicht
+auch bei wachsendem Umfang der Anwendung verständlich bleibt.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Clearer Responsibility Boundaries</h2>
+        <h2>Klarere Abgrenzung der Zuständigkeiten</h2>
 
         <p>
-          The architecture in v1.2.4 can be summarized through a few focused
-          responsibilities.
+          Die Architektur in Version 1.2.4 lässt sich anhand einiger weniger, klar definierter
+Aufgabenbereiche zusammenfassen.
         </p>
 
         <pre><code>Adapter
@@ -631,18 +624,18 @@ MongoDB
 → persistence</code></pre>
 
         <p>
-          Keeping these boundaries explicit is important because Ambiten is
-          intended to support both approachable direct usage and more
-          demanding runtime architectures.
+          Es ist wichtig, diese Grenzen klar zu definieren, da Ambiten
+sowohl eine unkomplizierte, direkte Nutzung als auch anspruchsvollere
+Laufzeitarchitekturen unterstützen soll.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Reusable Infrastructure, Isolated Execution</h2>
+        <h2>Wiederverwendbare Infrastruktur, isolierte Ausführung</h2>
 
         <p>
-          Another important distinction is the difference between
-          process-level resources and execution-level state.
+          Eine weitere wichtige Unterscheidung ist der Unterschied zwischen
+Ressourcen auf Prozessebene und dem Zustand auf Ausführungsebene.
         </p>
 
         <pre><code>PROCESS LIFETIME
@@ -666,29 +659,29 @@ logger metadata
 runtime metadata</code></pre>
 
         <p>
-          A MongoDB connection can be reused across many executions while
-          tenant identity, request identity, transaction state, and runtime
-          metadata remain isolated to the execution that created them.
+          Eine MongoDB-Verbindung kann über mehrere Ausführungen hinweg wiederverwendet werden, während
+die Mandantenidentität, die Anforderungsidentität, der Transaktionsstatus und die Laufzeit-Metadaten
+auf die jeweilige Ausführung beschränkt bleiben, in der sie erstellt wurden.
         </p>
 
         <p>
-          This is one of the foundations that allows the same Ambiten runtime
-          to serve concurrent workloads without turning reusable
-          infrastructure into request-specific mutable state.
+          Dies ist eine der Grundlagen, die es derselben Ambiten-Laufzeitumgebung
+ ermöglicht, gleichzeitige Arbeitslasten zu bedienen, ohne dass wiederverwendbare
+ Infrastruktur in einen anforderungsspezifischen, veränderbaren Zustand überführt wird.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Progressive Adoption Remains Important</h2>
+        <h2>Eine schrittweise Einführung ist nach wie vor wichtig</h2>
 
         <p>
-          Ambiten is strongest when applications begin to require structured
-          runtime behavior, but the framework was not designed to make that
-          architecture a prerequisite for getting started.
+          Ambiten spielt seine Stärken vor allem dann aus, wenn Anwendungen ein strukturiertes
+Laufzeitverhalten erfordern; das Framework wurde jedoch nicht so konzipiert, dass diese
+Architektur eine Voraussetzung für den Einstieg darstellt.
         </p>
 
         <p>
-          A developer can begin here:
+          Ein Entwickler kann hier beginnen:
         </p>
 
         <pre><code>AmbitenClient
@@ -696,7 +689,7 @@ runtime metadata</code></pre>
 MongoDB</code></pre>
 
         <p>
-          Then introduce context:
+          Führen Sie anschließend den Kontext ein:
         </p>
 
         <pre><code>AmbitenContext
@@ -704,7 +697,7 @@ MongoDB</code></pre>
 AmbitenClient / Application</code></pre>
 
         <p>
-          Then reusable schema and model structure:
+          Anschließend die wiederverwendbare Schema- und Modellstruktur:
         </p>
 
         <pre><code>AmbitenSchema
@@ -712,7 +705,7 @@ AmbitenClient / Application</code></pre>
 AmbitenModel</code></pre>
 
         <p>
-          And eventually:
+          Und schließlich:
         </p>
 
         <pre><code>Framework Adapters
@@ -724,28 +717,28 @@ Instrumentation
 Runtime Orchestration</code></pre>
 
         <p>
-          Applications can adopt the amount of structure that matches their
-          actual requirements.
+          Anwendungen können den Umfang an Struktur nutzen, der ihren
+tatsächlichen Anforderungen entspricht.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Documentation Updated With The Runtime</h2>
-
-        <p>
-          Alongside the Core release, several areas of the Ambiten
-          documentation have been revised so that the public architecture
-          matches the runtime more precisely.
-        </p>
+        <h2>Dokumentation mit der Laufzeit aktualisiert</h2>
 
         <p>
-          The updates cover AmbitenClient, Schema, Context, Context Binding,
-          Transactions, Provider responsibilities, ModelContext propagation,
-          multi-tenant infrastructure, and the complete One Request Flow.
+          Parallel zur Veröffentlichung der Core-Version wurden mehrere Bereiche der Dokumentation zu Ambiten
+ überarbeitet, damit die öffentliche Architektur
+ genauer mit der Laufzeitumgebung übereinstimmt.
         </p>
 
         <p>
-          A particular focus has been removing ambiguous language around:
+          Die Aktualisierungen betreffen AmbitenClient, Schema, Kontext, Kontextbindung,
+Transaktionen, Provider-Verantwortlichkeiten, die Weitergabe des ModelContext,
+die Multi-Tenant-Infrastruktur sowie den gesamten One-Request-Ablauf.
+        </p>
+
+        <p>
+          Ein besonderer Schwerpunkt lag dabei auf der Beseitigung mehrdeutiger Formulierungen in Bezug auf:
         </p>
 
         <pre><code>execution state
@@ -769,58 +762,58 @@ vs
 model-runtime usage</code></pre>
 
         <p>
-          Clear terminology becomes increasingly important as a runtime grows.
-          The architecture should not only work. Developers should be able to
-          understand why it works and where each responsibility belongs.
+          Eine klare Terminologie gewinnt mit zunehmender Größe einer Laufzeitumgebung immer mehr an Bedeutung.
+Die Architektur sollte nicht nur funktionieren. Entwickler sollten in der Lage sein,
+zu verstehen, warum sie funktioniert und wo die jeweiligen Zuständigkeiten liegen.
         </p>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Installing Ambiten Core v1.2.4</h2>
+        <h2>Installation von Ambiten Core v1.2.4</h2>
 
         <p>
-          The release is available through the <code>@ambiten/core</code>
-          package.
+          Die Veröffentlichung ist über die <code>@ambiten/core</code>
+          Paket.
         </p>
 
         <pre><code>pnpm add @ambiten/core@1.2.4</code></pre>
 
-        <p>or:</p>
+        <p>oder:</p>
 
         <pre><code>npm install @ambiten/core@1.2.4</code></pre>
 
-        <hr class="article-divider" />
+        <hr class="article-divider">
 
-        <h2>Moving Forward</h2>
+        <h2>Der Weg in die Zukunft</h2>
 
         <p>
-          Ambiten Core v1.2.4 is a refinement release, but the boundaries it
-          clarifies are important for where the runtime is heading.
+          Ambiten Core v1.2.4 ist eine Verfeinerungsversion, doch die Grenzen, die sie
+ verdeutlicht, sind für die zukünftige Ausrichtung der Laufzeitumgebung von Bedeutung.
         </p>
 
         <p>
-          Context should describe an execution without becoming application
-          data. Models should coordinate persistence operations without
-          owning infrastructure lifecycle. Tenant identity should remain
-          separate from tenant infrastructure. Transactions should preserve
-          atomicity without forcing session objects throughout business code.
+          Der Kontext sollte eine Ausführung beschreiben, ohne selbst zu Anwendungsdaten zu werden.
+Modelle sollten Persistenzvorgänge koordinieren, ohne
+den Lebenszyklus der Infrastruktur zu steuern. Die Identität eines Mandanten sollte
+von dessen Infrastruktur getrennt bleiben. Transaktionen sollten die
+Atomizität gewährleisten, ohne die Verwendung von Sitzungsobjekten im gesamten Geschäftslogikcode zu erzwingen.
         </p>
 
         <p>
-          And direct MongoDB access should remain approachable even when the
-          same runtime is capable of supporting substantially more advanced
-          systems.
+          Und der direkte Zugriff auf MongoDB sollte auch dann weiterhin möglich sein, wenn die
+ gleiche Laufzeitumgebung bereits wesentlich komplexere
+ Systeme unterstützen kann.
         </p>
 
         <blockquote>
-          Context carries execution. Model binds execution to an operation.
-          Infrastructure determines where it runs. MongoDB performs
-          persistence.
+          Der Kontext steuert die Ausführung. Das Modell bindet die Ausführung an eine Operation.
+Die Infrastruktur bestimmt, wo diese ausgeführt wird. MongoDB sorgt für die
+Persistenz.
         </blockquote>
 
         <p>
-          That is the runtime model Ambiten Core v1.2.4 continues to make
-          clearer.
+          Dies wird durch das Laufzeitmodell Ambiten Core v1.2.4 immer
+ deutlicher.
         </p>
       </div>
     </article>
@@ -828,36 +821,37 @@ model-runtime usage</code></pre>
 
   <footer>
     <div class="footer-main">
-      <a class="brand" href="../../" aria-label="Abinod home">
-        <img src="../../assets/abinod-mark.svg" alt="" />
+      <a class="brand" href="../../" aria-label="Abinod Startseite">
+        <img src="../../assets/abinod-mark.svg" alt="">
         <span>Abinod</span>
       </a>
 
-      <span>Built to create. Built to last.</span>
+      <span>Entwickelt, um zu gestalten. Entwickelt, um Bestand zu haben.</span>
     </div>
 
-    <div class="footer-links" aria-label="Footer navigation">
-      <a href="../../products/">Products</a>
-      <a href="../../ecosystem/">Ecosystem</a>
-      <a href="../../#company">Company</a>
-      <a href="../../about/">About</a>
-      <a href="../../founder/">Founder</a>
-      <a href="../../mission/">Mission</a>
-      <a href="../../brand-essence/">Brand Essence</a>
+    <div class="footer-links" aria-label="Fußzeilennavigation">
+      <a href="../../products/">Produkte</a>
+      <a href="../../ecosystem/">Ökosystem</a>
+      <a href="../../#company">Unternehmen</a>
+      <a href="../../about/">Über</a>
+      <a href="../../founder/">Gründer</a>
+      <a href="../../mission/">Leitbild</a>
+      <a href="../../brand-essence/">Markenessenz</a>
       <a href="../">Blog</a>
-      <a href="../../docs/">Ambiten Docs</a>
-      <a href="../../contact/">Contact</a>
+      <a href="../../docs/">Ambiten-Dokumente</a>
+      <a href="../../contact/">Kontakt</a>
       <a href="../privacy/" aria-current="page">
-        Privacy Policy
+        Datenschutzerklärung
       </a>
     </div>
 
     <p class="legal">
-      Copyright 2026 Abinod. All rights reserved.
+      Copyright 2026 Abinod. Alle Rechte vorbehalten.
     </p>
   </footer>
 
-  <script src="../../assets/site.js" defer></script>
-</body>
+  <script src="../../assets/site.js" defer=""></script>
 
-</html>
+
+  <script src="../../assets/language-switcher.js" defer data-abinod-lang-switcher="script"></script>
+  </body></html>

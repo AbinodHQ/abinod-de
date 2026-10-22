@@ -1,0 +1,39 @@
+warning: in the working copy of 'about/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/ambiten-v1-2-0-stronger-schema-enforcement/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/strong-foundations-create-stronger-systems/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blog/verinodo-launch-v1.0.0/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'brand-essence/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'contact/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'ecosystem/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'founder/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'mission/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'og-abinod.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'privacy/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'products/index.html', LF will be replaced by CRLF the next time Git touches it
+ about/index.html                                   | 318 [32m+++++[m[31m-----[m
+ .../index.html"                                    | 534 [32m+++++++++[m[31m--------[m
+ .../index.html"                                    | 638 [32m++++++++++[m[31m-----------[m
+ .../index.html                                     | 384 [32m++++++[m[31m-------[m
+ blog/index.html                                    | 198 [32m++++[m[31m---[m
+ .../index.html                                     | 270 [32m+++++[m[31m----[m
+ blog/verinodo-launch-v1.0.0/index.html             | 285 [32m+++++[m[31m----[m
+ brand-essence/index.html                           | 275 [32m+++++[m[31m----[m
+ contact/index.html                                 | 192 [32m+++[m[31m----[m
+ docs/index.html                                    | 169 [32m+++[m[31m---[m
+ ecosystem/index.html                               | 177 [32m+++[m[31m---[m
+ founder/index.html                                 | 258 [32m++++[m[31m-----[m
+ index.html                                         | 334 [32m++++++[m[31m-----[m
+ mission/index.html                                 | 527 [32m+++++++++[m[31m--------[m
+ og-abinod.html                                     | 404 [32m++++++[m[31m-------[m
+ package-lock.json                                  | 559 [32m++++++++++++++++++[m
+ package.json                                       |   2 [32m+[m
+ privacy/index.html                                 |   6 [32m+[m[31m-[m
+ products/index.html                                | 371 [32m++++++[m[31m------[m
+ 19 files changed, 3182 insertions(+), 2719 deletions(-)
