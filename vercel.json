@@ -1,0 +1,74 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about/",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/blog/",
+      "destination": "/blog/index.html"
+    },
+    {
+      "source": "/blog/strong-foundations-create-stronger-systems/",
+      "destination": "/blog/strong-foundations-create-stronger-systems/index.html"
+    },
+    {
+      "source": "/blog/ambiten-v1-2-0-stronger-schema-enforcement/",
+      "destination": "/blog/ambiten-v1-2-0-stronger-schema-enforcement/index.html"
+    }, 
+    {
+      "source": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/",
+      "destination": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/index.html"
+    },
+    {
+      "source": "/brand-essence/",
+      "destination": "/brand-essence/index.html"
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/docs/",
+      "destination": "/docs/index.html"
+    },
+    {
+      "source": "/ecosystem/",
+      "destination": "/ecosystem/index.html"
+    },
+    {
+      "source": "/founder/",
+      "destination": "/founder/index.html"
+    },
+    {
+      "source": "/mission/",
+      "destination": "/mission/index.html"
+    },
+    {
+      "source": "/products/",
+      "destination": "/products/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Ambiten v1.2.0 strengthens schema enforcement, document validation, bootstrap behavior, and runtime connection hooks." />
+  <meta property="og:title" content="Ambiten v1.2.0: Stronger Schema Enforcement | Abinod" />
+  <meta property="og:description"
+    content="A product note on Ambiten v1.2.0 and the move toward a more predictable runtime." />
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="2026-08-23" />
+  <meta property="og:image" content="../../assets/og-abinod.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ambiten v1.2.0: Stronger Schema Enforcement | Abinod" />
+  <meta name="twitter:description"
+    content="A product note on Ambiten v1.2.0 and the move toward a more predictable runtime." />
+  <meta name="twitter:image" content="../../assets/og-abinod.png" />
+  <title>Ambiten v1.2.0: Stronger Schema Enforcement | Abinod</title>
+  <link rel="icon" href="../../assets/abinod-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+
+<body>
+  <header class="site-header page-header">
+    <a class="brand" href="../../" aria-label="Abinod home">
+      <img src="../../assets/abinod-mark.svg" alt="" />
+      <span>Abinod</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="../../products/">Products</a>
+      <a href="../../ecosystem/">Ecosystem</a>
+      <a href="../../#company">Company</a>
+      <a href="../../about/">About</a>
+      <a href="../../founder/">Founder</a>
+      <a href="../../mission/">Mission</a>
+      <a href="../../brand-essence/">Brand Essence</a>
+      <a href="../">Blog</a>
+      <a href="../../contact/">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-button guide-toggle" type="button" data-guide-toggle>Guide</button>
+      <button class="header-button" type="button" data-theme-toggle>Dark</button>
+      <button class="header-button menu-toggle" type="button" data-menu-toggle aria-label="Open navigation"
+        aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <article class="blog-article">
+      <header class="blog-article-hero">
+        <p class="eyebrow">Ambiten</p>
+        <h1>Ambiten v1.2.0: Stronger Schema Enforcement and a More Predictable Runtime</h1>
+        <p>
+          Ambiten continues to evolve around a simple idea: infrastructure
+          should make application development more predictable, not more
+          complicated.
+        </p>
+        <div class="article-author-block">
+          <img src="../../assets/author-emmanuel.jpg" alt="Emmanuel Abiodun Nodolomwanyi" width="56" height="56" />
+          <div>
+            <span>Written by</span>
+            <strong>Emmanuel Abiodun Nodolomwanyi</strong>
+          </div>
+        </div>
+        <div class="article-meta article-meta-rich">
+          <span>Product Note</span>
+          <span><time datetime="2026-08-23">August 23, 2026</time></span>
+          <span>6 min read</span>
+          <button class="article-share-button" type="button" data-share-button aria-label="Share this article">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M16 5l-8 4.5M8 14.5l8 4.5" />
+              <circle cx="18" cy="4" r="3" />
+              <circle cx="6" cy="12" r="3" />
+              <circle cx="18" cy="20" r="3" />
+            </svg>
+            <span>Share</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="blog-article-body">
+        <p class="article-lede">
+          With Ambiten v1.2.0, the focus has been on strengthening some of the
+          runtime relationships developers depend on most: the connection
+          between schemas and models, document validation, and the lifecycle
+          of an initialized Ambiten runtime.
+        </p>
+        <p>
+          These changes may appear small when viewed individually, but
+          together they make the runtime more coherent and give developers
+          stronger guarantees as applications grow.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>From Schema Registration To Schema Enforcement</h2>
+        <p>
+          Ambiten has always provided schema and model abstractions, but
+          v1.2.0 strengthens the relationship between them.
+        </p>
+        <p>
+          When using <code>AmbitenBootstrapFactory</code>, a schema can be
+          defined alongside the model configuration:
+        </p>
+        <pre><code>import {
+  AmbitenBootstrapFactory
+} from "@ambiten/core";
+
+export async function run() {
+  return AmbitenBootstrapFactory.create({
+    config: {
+      schema: {
+        username: {
+          type: "string",
+          required: true,
+          unique: true
+        },
+        password: {
+          type: "string",
+          required: true
+        },
+        email: {
+          type: "string",
+          required: true
+        }
+      },
+
+      model: {
+        collectionName: "users"
+      }
+    }
+  });
+}</code></pre>
+        <p>
+          During bootstrap, Ambiten creates the runtime schema and connects it
+          to the initialized model. That relationship now extends directly
+          into document operations.
+        </p>
+        <p>
+          When a model creates a document, the registered
+          <code>AmbitenSchema</code> participates in validation before the
+          document reaches MongoDB. This means a mistake such as:
+        </p>
+        <pre><code>await userModel.create({
+  usernmae: "john",
+  password: "secret",
+  email: "john@example.com"
+});</code></pre>
+        <p>
+          can be rejected because <code>usernmae</code> is not part of the
+          registered schema. Instead of allowing an incorrectly structured
+          document to silently enter the database, Ambiten can surface the
+          problem before persistence.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Stronger Document Contracts</h2>
+        <p>
+          MongoDB's flexible document model is one of its strengths, but
+          flexibility does not have to mean giving up application-level
+          guarantees.
+        </p>
+        <p>
+          With v1.2.0, Ambiten's schema layer can participate more actively in
+          enforcing those guarantees. Depending on the schema definition,
+          validation can now account for unknown document properties, required
+          properties, expected field types, and custom synchronous or
+          asynchronous validators.
+        </p>
+        <p>For example:</p>
+        <pre><code>const schema = runtime.getSchema();
+
+schema.validator("username", (value) =&gt; {
+  return value.length &gt;= 3;
+});</code></pre>
+        <p>
+          Custom validators remain available, but they now complement the
+          structural contract described by the schema rather than operating
+          independently from it.
+        </p>
+        <p>The runtime flow becomes much clearer:</p>
+        <pre><code>Schema Definition
+      |
+AmbitenSchema
+      |
+AmbitenModel
+      |
+Document Validation
+      |
+MongoDB</code></pre>
+        <p>
+          The model knows the schema it belongs to, and the schema has an
+          active role in determining whether a document is valid.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>A Cleaner Bootstrap Experience</h2>
+        <p>
+          One of the goals of <code>AmbitenBootstrapFactory</code> is to
+          reduce the amount of infrastructure wiring application code has to
+          perform manually. Developers describe the runtime they want:
+        </p>
+        <pre><code>const runtime =
+  await AmbitenBootstrapFactory.create({
+    config: {
+      schema: {
+        username: {
+          type: "string",
+          required: true
+        },
+        email: {
+          type: "string",
+          required: true
+        }
+      },
+
+      model: {
+        collectionName: "users"
+      }
+    }
+  });</code></pre>
+        <p>The initialized resources are then available through the runtime:</p>
+        <pre><code>const userModel = runtime.getModel();
+const userSchema = runtime.getSchema();</code></pre>
+        <p>
+          Application code does not have to repeatedly reconnect the schema,
+          collection, and model. That responsibility belongs to bootstrap.
+          The application can concentrate on using the initialized runtime.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>More Predictable Runtime Connection Hooks</h2>
+        <p>
+          Ambiten v1.2.0 also refines the runtime connection lifecycle.
+          Applications can register an <code>onConnect</code> callback:
+        </p>
+        <pre><code>runtime.onConnect(() =&gt; {
+  console.log("Ambiten connected");
+});</code></pre>
+        <p>
+          The behavior is designed to be predictable. If the runtime is still
+          waiting for its connection, the callback can execute once the
+          runtime becomes connected. If initialization has already completed
+          by the time the callback is registered, Ambiten can execute it
+          immediately instead of making the application wait for an event that
+          has already happened.
+        </p>
+        <p>This makes patterns such as the following straightforward:</p>
+        <pre><code>runtime.onConnect(() =&gt; {
+  const client = runtime.getMongoClient();
+
+  console.log(
+    "MongoDB client ready:",
+    Boolean(client)
+  );
+});</code></pre>
+        <p>
+          For applications that bootstrap before starting their HTTP server,
+          this provides a simple way to confirm runtime readiness.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>A Runtime That Exposes What Has Already Been Initialized</h2>
+        <p>
+          The <code>AmbitenRuntime</code> remains the primary runtime-facing
+          contract after bootstrap. A typical application can initialize
+          Ambiten once:
+        </p>
+        <pre><code>const runtime = await run();</code></pre>
+        <p>and then access capabilities such as:</p>
+        <pre><code>runtime.getMongoClient();
+runtime.getModel();
+runtime.getSchema();
+runtime.getLogger();
+runtime.getGraphQL();
+runtime.getGCRunner();</code></pre>
+        <p>alongside runtime operations including:</p>
+        <pre><code>runtime.registerMultiTenancy(...);
+runtime.cache(...);
+runtime.invalidateCache(...);
+runtime.onConnect(...);
+runtime.shutdown();</code></pre>
+        <p>The distinction is intentional:</p>
+        <blockquote>Bootstrap constructs and configures the environment.</blockquote>
+        <blockquote>The runtime exposes and operates the initialized environment.</blockquote>
+        <p>
+          Keeping those responsibilities separate allows application code to
+          remain relatively small even as infrastructure requirements
+          increase.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Why These Changes Matter</h2>
+        <p>
+          Ambiten is being developed for applications where MongoDB access
+          eventually becomes only one part of a larger runtime problem.
+        </p>
+        <p>
+          As systems grow, developers begin dealing with tenant identity,
+          request context, transaction continuity, runtime lifecycle,
+          connection management, logging, caching, validation, observability,
+          and adapter integration.
+        </p>
+        <p>
+          Ambiten's goal is to give these concerns a common runtime foundation
+          rather than requiring every application layer to coordinate them
+          independently.
+        </p>
+        <p>
+          Strengthening the schema-model relationship in v1.2.0 is part of
+          that direction. A schema should not simply exist because it was
+          registered during startup. A model that belongs to that schema
+          should be able to rely on it when handling documents.
+        </p>
+        <p>
+          Likewise, a runtime connection hook should reflect the actual state
+          of the runtime rather than requiring the application to reason about
+          when initialization happened. These are the kinds of guarantees
+          v1.2.0 continues to build.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Getting Started With Ambiten v1.2.0</h2>
+        <p>Ambiten can be installed from npm:</p>
+        <pre><code>npm install @ambiten/core</code></pre>
+        <p>
+          The documentation is available at
+          <a href="../../docs/">docs.ambiten.dev</a>.
+        </p>
+        <p>
+          The documentation covers the runtime, context propagation,
+          multi-tenancy, transactions, adapters, and other parts of the
+          Ambiten ecosystem.
+        </p>
+        <p>
+          A new tutorial series is also underway, starting from building an
+          Ambiten-powered API and progressively moving into the runtime
+          concepts behind it. The goal is not only to show which APIs are
+          available, but to explain why the runtime exists and how its
+          different pieces work together.
+        </p>
+
+        <hr class="article-divider" />
+
+        <h2>Moving Forward</h2>
+        <p>
+          Ambiten v1.2.0 is another step toward making the runtime more
+          consistent from initialization through persistence.
+        </p>
+        <p>
+          Schemas now have a stronger relationship with the models that
+          consume them. Document validation happens closer to the runtime
+          boundary where it belongs. Connection lifecycle behavior is more
+          predictable. And the Bootstrap Factory continues to reduce the
+          amount of infrastructure code developers need to coordinate
+          themselves.
+        </p>
+        <p>
+          There is still much more to explore. The upcoming tutorials will go
+          deeper into Ambiten's context-aware runtime, multi-tenancy,
+          transactions, adapters, and bootstrap workflow.
+        </p>
+        <p>
+          For now, v1.2.0 strengthens the foundation those capabilities build
+          upon.
+        </p>
+        <blockquote>
+          Ambiten: context-aware, multi-tenant and transaction-safe runtime
+          infrastructure for MongoDB applications.
+        </blockquote>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <a class="brand" href="../../" aria-label="Abinod home">
+        <img src="../../assets/abinod-mark.svg" alt="" />
+        <span>Abinod</span>
+      </a>
+      <span>Built to create. Built to last.</span>
+    </div>
+    <div class="footer-links" aria-label="Footer navigation">
+      <a href="../../products/">Products</a>
+      <a href="../../ecosystem/">Ecosystem</a>
+      <a href="../../#company">Company</a>
+      <a href="../../about/">About</a>
+      <a href="../../founder/">Founder</a>
+      <a href="../../mission/">Mission</a>
+      <a href="../../brand-essence/">Brand Essence</a>
+      <a href="../">Blog</a>
+      <a href="../../docs/">Ambiten Docs</a>
+      <a href="../../contact/">Contact</a>
+      <a href="../privacy/" aria-current="page">
+        Privacy Policy
+      </a>
+    </div>
+    <p class="legal">Copyright 2026 Abinod. All rights reserved.</p>
+  </footer>
+  <script src="../../assets/site.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<p align="center">
+  <img src="assets/abinod-mark.svg" alt="Abinod logo" width="96" />
+</p>
+
+# Abinod
+
+Official website for [Abinod](https://www.abinod.com/), a founder-led software company building infrastructure products for modern applications.
+
+Abinod exists to create products that help software remain understandable as it grows. Its first product is Ambiten, a context-aware runtime for modern multi-tenant systems.
+
+## Live Site
+
+[https://www.abinod.com/](https://www.abinod.com/)
+
+## What Is Included
+
+- Company homepage
+- Products page
+- Ecosystem page
+- About page
+- Founder page
+- Mission page
+- Brand Essence page
+- Blog and first essay
+- Contact page with email-based form submission
+- Ambiten documentation entry point
+- Shared Open Graph image
+- Mobile navigation
+- Light and dark mode
+- First-visit site guide
+- Cookie consent banner
+- Service worker for static asset caching
+
+## Tech Stack
+
+- Node.js
+- Express
+- Static HTML, CSS, and JavaScript
+- Service worker
+- GitHub Actions for production readiness checks
+- Vercel Functions for production API routes
+
+## Run Locally
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the production server locally:
+
+```bash
+npm start
+```
+
+Start the development server with Node watch mode:
+
+```bash
+npm run dev
+```
+
+By default, the site runs at:
+
+```text
+http://localhost:3000
+```
+
+## Contact Form
+
+The contact form posts to `/api/contact`. In production, the Vercel Function
+sends the message to:
+
+```text
+contact@abinod.com
+```
+
+Messages are sent by email and are not stored in a database. If email delivery
+is unavailable, the frontend shows a mailto fallback.
+
+General enquiries and partnerships: [contact@abinod.com](mailto:contact@abinod.com).
+Product support for Ambiten and VeriNodo: [support@abinod.com](mailto:support@abinod.com).
+
+## Cookies And Consent
+
+The website shows a bottom consent banner for first-time visitors. Visitors can accept all optional cookies, reject optional cookies, or save preferences for preference and analytics cookies.
+
+The consent choice is stored in a first-party cookie named:
+
+```text
+abinod_cookie_consent
+```
+
+## Service Worker
+
+The site registers `sw.js` to cache core static assets for faster repeat visits and basic offline resilience.
+
+## Production Workflow
+
+The production GitHub Actions workflow lives at:
+
+```text
+.github/workflows/production.yml
+```
+
+It runs on pushes to `main` and can also be started manually from GitHub Actions.
+
+The workflow:
+
+- Installs dependencies with `npm ci`
+- Checks JavaScript syntax
+- Starts the production server
+- Smoke-tests the main public routes
+- Smoke-tests the local contact fallback
+- Prints server logs if something fails
+
+## Deploying On Vercel
+
+The static website can be deployed on Vercel. The contact API and health check
+live in the `api/` directory:
+
+```text
+api/contact.js
+api/health.js
+```
+
+No database environment variables are required. Add these SMTP variables in the
+Vercel dashboard:
+
+```text
+SMTP_HOST
+SMTP_PORT
+SMTP_USER
+SMTP_PASS
+SMTP_FROM
+CONTACT_TO=contact@abinod.com
+```
+
+`SMTP_FROM` should usually be the same mailbox as `SMTP_USER`, or another
+verified sender allowed by the SMTP provider. You can verify the deployed API
+configuration at:
+
+```text
+https://www.abinod.com/api/health
+```
+
+## Open Graph
+
+The website uses this shared Open Graph and Twitter card image:
+
+```text
+assets/og-abinod.png
+```
+
+## Project Structure
+
+```text
+.
+├── about/
+├── assets/
+├── blog/
+├── brand-essence/
+├── contact/
+├── docs/
+├── ecosystem/
+├── founder/
+├── mission/
+├── products/
+├── server.js
+├── styles.css
+└── package.json
+```
+
+## Brand Principle
+
+Strong foundations create stronger systems.

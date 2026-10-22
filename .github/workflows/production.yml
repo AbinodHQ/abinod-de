@@ -1,0 +1,123 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production-check:
+    name: Production readiness
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      NODE_ENV: production
+      PORT: 3000
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check server.js
+          node --check assets/site.js
+          node --check assets/contact-form.js
+          node --check sw.js
+          node --check api/contact.js
+          node --check api/health.js
+
+      - name: Start production server
+        run: |
+          npm start > server.log 2>&1 &
+          echo $! > server.pid
+
+      - name: Wait for production server
+        run: |
+          set -euo pipefail
+
+          for attempt in {1..30}; do
+            if ! kill -0 "$(cat server.pid)" 2>/dev/null; then
+              echo "Server process exited before it became ready."
+              cat server.log || true
+              exit 1
+            fi
+
+            if curl --fail --silent --show-error "http://127.0.0.1:${PORT}/" > /dev/null; then
+              echo "Server is ready."
+              exit 0
+            fi
+
+            sleep 1
+          done
+
+          echo "Server did not become ready in time."
+          cat server.log || true
+          exit 1
+
+      - name: Smoke test public routes
+        run: |
+          set -euo pipefail
+
+          for route in \
+            "/" \
+            "/products/" \
+            "/ecosystem/" \
+            "/about/" \
+            "/founder/" \
+            "/mission/" \
+            "/brand-essence/" \
+            "/blog/" \
+            "/blog/ambiten-v1-2-0-stronger-schema-enforcement/" \
+            "/blog/strong-foundations-create-stronger-systems/" \
+            "/contact/" \
+            "/docs/" \
+            "/assets/site.js" \
+            "/sw.js" \
+            "/assets/og-abinod.png"
+          do
+            curl --fail --silent --show-error "http://127.0.0.1:${PORT}${route}" > /dev/null
+          done
+
+      - name: Smoke test local contact fallback
+        run: |
+          status=$(curl --silent --output response.json --write-out "%{http_code}" \
+            --request POST "http://127.0.0.1:${PORT}/api/contact" \
+            --header "Content-Type: application/json" \
+            --data '{"name":"A","email":"bad","topic":"General","message":"short"}')
+
+          cat response.json
+
+          if [ "$status" != "503" ]; then
+            echo "Expected local contact fallback to return 503, got $status"
+            exit 1
+          fi
+
+      - name: Show server logs
+        if: always()
+        run: cat server.log || true
+
+      - name: Stop production server
+        if: always()
+        run: |
+          if [ -f server.pid ]; then
+            kill "$(cat server.pid)" || true
+          fi
