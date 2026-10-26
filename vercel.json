@@ -8,6 +8,10 @@
   },
   "rewrites": [
     {
+      "source": "/blog/beyond-the-cookie-banner/",
+      "destination": "/blog/beyond-the-cookie-banner/index.html"
+    },
+    {
       "source": "/",
       "destination": "/index.html"
     },
@@ -26,7 +30,7 @@
     {
       "source": "/blog/ambiten-v1-2-0-stronger-schema-enforcement/",
       "destination": "/blog/ambiten-v1-2-0-stronger-schema-enforcement/index.html"
-    }, 
+    },
     {
       "source": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/",
       "destination": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/index.html"
