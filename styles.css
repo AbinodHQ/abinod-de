@@ -2867,3 +2867,18 @@ body[data-theme="dark"] .site-guide-actions .button.secondary {
     flex-direction: column;
   }
 }
+
+/* PureConsent product family */
+.pureconsent-card{display:flex;flex-direction:column}
+.pureconsent-card .card-actions{margin-top:auto;padding-top:28px}
+.pureconsent-card .product-topline{flex-wrap:wrap;gap:12px}
+.pureconsent-brand{display:block;width:100%;max-width:300px}
+.pureconsent-card .pureconsent-brand img{width:100%;height:auto;object-fit:contain}
+.pureconsent-wordmark-dark{display:none}
+body[data-theme="dark"] .pureconsent-wordmark-light{display:none}
+body[data-theme="dark"] .pureconsent-wordmark-dark{display:block}
+.pureconsent-foundation-product,.pureconsent-node,.pureconsent-diagram-product{border-color:rgba(79,70,229,.45)}
+.page-foundation-node.pureconsent-node{left:35%;bottom:0}
+.ecosystem-node.pureconsent-node img{width:42px;height:46px;object-fit:contain}
+.diagram-products:has(.pureconsent-diagram-product){grid-template-columns:repeat(3,minmax(0,1fr))}
+.diagram-product{min-width:0}
