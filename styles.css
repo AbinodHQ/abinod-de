@@ -2872,12 +2872,13 @@ body[data-theme="dark"] .site-guide-actions .button.secondary {
 .pureconsent-card{display:flex;flex-direction:column}
 .pureconsent-card .card-actions{margin-top:auto;padding-top:28px}
 .pureconsent-card .product-topline{flex-wrap:wrap;gap:12px}
-.pureconsent-brand{display:inline-flex;max-width:100%}
+.pureconsent-brand{display:inline-flex;align-items:center;gap:8px;max-width:100%}
+.pureconsent-card .pureconsent-brand .pureconsent-shield{width:36px;height:40px;object-fit:contain;flex-shrink:0}
 .pureconsent-wordmark{font-size:27px;font-weight:750;letter-spacing:-1px;line-height:1.2;color:var(--ink);white-space:nowrap}
-.pureconsent-wordmark>span{color:#4f46e5}
+.pureconsent-wordmark>span{color:#4F46E5}
 .pureconsent-wordmark>.pureconsent-dot{color:#059669}
 body[data-theme="dark"] .pureconsent-wordmark{color:var(--white)}
-body[data-theme="dark"] .pureconsent-wordmark>span{color:#8983ff}
+body[data-theme="dark"] .pureconsent-wordmark>span{color:#4F46E5}
 body[data-theme="dark"] .pureconsent-wordmark>.pureconsent-dot{color:#10b981}
 .pureconsent-foundation-product,.pureconsent-node,.pureconsent-diagram-product{border-color:rgba(79,70,229,.45)}
 .page-foundation-node.pureconsent-node{left:35%;bottom:0}
