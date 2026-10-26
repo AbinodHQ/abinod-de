@@ -83,13 +83,13 @@ Product support for Ambiten and VeriNodo: [support@abinod.com](mailto:support@ab
 
 ## Cookies And Consent
 
-The website shows a bottom consent banner for first-time visitors. Visitors can accept all optional cookies, reject optional cookies, or save preferences for preference and analytics cookies.
+The German site loads PureConsent from https://com.pureconsent.de/consent.js with website ID 20169897-e478-431c-a1e3-1e2fff2826bb on every public page. Activate the www.abinod.de origin by completing its DNS verification in PureConsent before deployment. The configuration must use https://www.abinod.de/privacy/.
 
-The consent choice is stored in a first-party cookie named:
+The former banner functions remain in assets/site.js and their styles remain in styles.css, but the initialization call is disabled. The old abinod_cookie_consent cookie is not migrated into PureConsent: visitors make a fresh choice. Rollback requires removing the PureConsent script tags and restoring runWhenIdle(openCookieConsent, 900).
 
-```text
-abinod_cookie_consent
-```
+No optional analytics scripts are currently installed. The external VeriNodo testimonials loader is gated behind the marketing category. Future optional scripts must use type="text/plain" and data-consent="analytics" or data-consent="marketing"; external scripts use data-src instead of src. Do not gate the site's essential navigation or contact form. Already-running third-party services require provider-specific cleanup on withdrawal.
+
+PureConsent stores choices in first-party localStorage for 180 days and submits consent receipts and separate page-view events. Its persistent privacy button reopens settings. The widget does not work on an unregistered localhost or preview origin; do not bypass origin verification to test it. Both rejection and acceptance must be verified on the authorized production domain after activation. The .com site requires its own website ID and is unchanged.
 
 ## Service Worker
 

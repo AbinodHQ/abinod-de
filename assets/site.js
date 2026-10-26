@@ -371,7 +371,8 @@ themeToggle?.addEventListener("click", () => {
 guideToggle?.addEventListener("click", () => openGuide(true));
 
 registerServiceWorker();
-runWhenIdle(openCookieConsent, 900);
+// Legacy consent implementation retained above for rollback.
+// PureConsent now owns the banner and preferences; do not initialize the legacy UI.
 if (isHomepage() && !hasGuideBeenShown()) {
   runWhenIdle(openGuideOnceOnHomepage, 1800);
 }
