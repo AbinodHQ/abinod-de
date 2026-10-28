@@ -2572,7 +2572,7 @@ body[data-theme="dark"] .site-guide-actions .button.secondary {
   accent-color: var(--gold);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
   .site-header {
     background: linear-gradient(180deg, rgba(8, 15, 20, 0.94), rgba(8, 15, 20, 0.72));
     backdrop-filter: blur(14px);
@@ -2916,3 +2916,5 @@ body[data-theme="dark"] .diagram-products .diagram-product span{color:var(--whit
 @media(max-width:700px){.blog-grid{grid-template-columns:minmax(0,1fr)}}
 
 .portfolio-card .button.secondary{color:var(--ink);border-color:var(--line);background:transparent}
+
+.portfolio-card p{overflow-wrap:anywhere;hyphens:auto}
