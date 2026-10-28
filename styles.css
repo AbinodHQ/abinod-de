@@ -1626,7 +1626,7 @@ body[data-theme="dark"] .testimonials-section {
 
 .blog-grid {
   display: grid;
-  grid-template-columns: minmax(0, 760px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
@@ -2895,3 +2895,24 @@ body[data-theme="dark"] .diagram-products .diagram-product span{color:var(--whit
 /* The third product repeats Ambiten’s featured surface in each theme. */
 .product-card.featured .pureconsent-wordmark{color:var(--white)}
 .product-card.featured .feature-list li{color:rgba(255,255,255,.78)}
+
+/* Commercial portfolio and documentation */
+.commercial-article{max-width:1200px;margin-inline:auto}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.commercial-article .portfolio-card{border:1px solid var(--line);border-radius:8px;padding:28px;margin:0;display:flex;flex-direction:column}
+.portfolio-card img{object-fit:contain;margin-bottom:20px}
+.portfolio-card .button{margin-top:auto}
+#enterprise{scroll-margin-top:120px}
+@media(max-width:900px){.portfolio-grid{grid-template-columns:1fr}}
+
+/* Keep portfolio headings and editorial cards within their grid tracks. */
+.portfolio-card{min-width:0}
+.commercial-article .portfolio-card h2{font-size:clamp(1.5rem,2.5vw,2rem);line-height:1.15;letter-spacing:-.03em;overflow-wrap:anywhere}
+.blog-grid .blog-card{min-width:0;max-width:none;display:flex;flex-direction:column;align-items:flex-start}
+.blog-grid .blog-card h3{font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.25;overflow-wrap:anywhere}
+.blog-grid .blog-card .blog-link{margin-top:auto;padding-top:12px}
+.blog-grid .blog-card-meta{min-width:0;overflow-wrap:anywhere}
+@media(max-width:1199px){.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.blog-grid{grid-template-columns:minmax(0,1fr)}}
+
+.portfolio-card .button.secondary{color:var(--ink);border-color:var(--line);background:transparent}

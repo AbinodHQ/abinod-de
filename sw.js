@@ -1,4 +1,4 @@
-const CACHE_NAME = "abinod-static-v19-product-surfaces";
+const CACHE_NAME = "abinod-static-v22-german-parity";
 const STATIC_ASSETS = [
   "/styles.css",
   "/assets/site.js",

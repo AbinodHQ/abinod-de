@@ -8,6 +8,10 @@
   },
   "rewrites": [
     {
+      "source": "/documentation/",
+      "destination": "/documentation/index.html"
+    },
+    {
       "source": "/blog/beyond-the-cookie-banner/",
       "destination": "/blog/beyond-the-cookie-banner/index.html"
     },
