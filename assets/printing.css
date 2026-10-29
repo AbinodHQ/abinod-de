@@ -462,3 +462,6 @@
 .print-carousel-pause:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(max-width:1024px){.printing-page .print-hero{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:420px){.print-carousel-controls{gap:8px;flex-wrap:wrap}.print-carousel-pause{flex-basis:100%}}
+
+/* Lead with printing imagery when the hero stacks on smaller screens. */
+@media(max-width:1024px){.printing-page .print-hero .print-carousel{grid-row:1}.printing-page .print-hero .print-hero-copy{grid-row:2}}
