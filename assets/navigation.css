@@ -49,3 +49,22 @@
 .solutions-page .commercial-article .button.secondary,.printing-page main .button.secondary{color:var(--ink);border-color:var(--line)}
 .contact-page #enterprise{scroll-margin-top:110px}
 .primary-nav .nav-panel a[aria-current=page]{background:rgba(212,175,55,.14);font-weight:700}
+
+/* German text must shrink within grid tracks and wrap instead of clipping. */
+:lang(de) :is(.hero-copy,.page-hero-copy,.hero-visual,.page-hero-visual){min-width:0;max-width:100%}
+:lang(de) :is(h1,h2,h3,.eyebrow){overflow-wrap:anywhere;hyphens:auto}
+@media(max-width:760px){
+  :lang(de) :is(.hero,.page-hero){grid-template-columns:minmax(0,1fr)}
+  :lang(de) main :is(h1,h2,h3,p,li){overflow-wrap:anywhere;hyphens:auto}
+  :lang(de) main h1,:lang(de) .print-hero-copy h1,:lang(de) .blog-article-hero h1{font-size:clamp(2rem,8.5vw,3.5rem);line-height:1.12}
+  :lang(de) main h2{font-size:clamp(1.6rem,6.5vw,2.5rem);line-height:1.18}
+  :lang(de) main :is(.button,.contact-method,.article-author-block){max-width:100%;min-width:0;overflow-wrap:anywhere}
+  :lang(de) main .button{white-space:normal;text-align:center;hyphens:auto}
+  :lang(de) :is(.foundation-system,.page-foundation-system){max-width:100%}
+  :lang(de) .foundation-product .verinodo-product{flex-direction:column;gap:5px}
+  :lang(de) .foundation-product .verinodo-wordmark{font-size:18px}
+  :lang(de) .foundation-product{max-width:48%;overflow-wrap:anywhere;hyphens:auto}
+  :lang(de) .article-author-block>div{min-width:0}
+  :lang(de) main pre{max-width:100%;overflow-x:auto}
+}
+@media(max-width:760px){:lang(de) main blockquote{overflow-wrap:anywhere;hyphens:auto;font-size:clamp(1.3rem,5.5vw,2rem)} :lang(de) .foundation-product::before{display:none}}

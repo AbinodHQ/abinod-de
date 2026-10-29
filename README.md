@@ -4,32 +4,45 @@
 
 # Abinod
 
-Official website for [Abinod](https://www.abinod.com/), a founder-led software company building infrastructure products for modern applications.
+Official German website for Abinod: software products, focused engineering services, and professional digital and screen printing.
 
-Abinod exists to create products that help software remain understandable as it grows. Its first product is Ambiten, a context-aware runtime for modern multi-tenant systems.
+The product portfolio includes **Ambiten** (runtime infrastructure), **VeriNodo** (customer feedback and testimonials), and **PureConsent** (website consent management).
 
-## Live Site
+## Live websites
 
-[https://www.abinod.com/](https://www.abinod.com/)
+- English: https://www.abinod.com/ — repository `abinod`
+- German: https://www.abinod.de/ — repository `abinod-de`
 
-## What Is Included
+These are separate static sites. Maintain corresponding routes, localized copy, canonical URLs and language links in both repositories; do not overwrite German consent integration with the English implementation.
 
-- Company homepage
-- Products page
-- Ecosystem page
-- About page
-- Founder page
-- Mission page
-- Brand Essence page
-- Blog and first essay
-- Contact page with email-based form submission
-- Ambiten documentation entry point
-- Shared Open Graph image
-- Mobile navigation
-- Light and dark mode
-- First-visit site guide
-- Cookie consent banner
-- Service worker for static asset caching
+## Pages and features
+
+| Route | Content |
+| --- | --- |
+| / | Company overview, products, services, testimonials and latest articles |
+| /products/ | Ambiten, VeriNodo and PureConsent |
+| /ecosystem/ | Product portfolio and shared foundation |
+| /solutions/ | Technology and engineering services |
+| /printing/ | Digital and screen printing, artwork carousel, service cards and project guidance |
+| /about/, /founder/, /mission/, /brand-essence/ | Company, founder and principles |
+| /blog/ | Article grid; product releases and engineering stories, including the PureConsent integration |
+| /contact/ | Enquiry form, printing requests and enterprise contact anchor |
+| /documentation/ | Documentation hub for the three products |
+| /docs/ | Ambiten documentation entry point |
+| /privacy/ | Privacy policy |
+
+Shared features include grouped desktop dropdown navigation, mobile menus, route-preserving language links, light/dark themes, a responsive four-group corporate footer, article author details and sharing controls, social metadata, and static-asset caching. Printing artwork is served from optimized WebP assets.
+
+## Maintaining the UI
+
+- `styles.css`: base theme, page layouts, product cards and blog styles.
+- `assets/navigation.css` / `navigation.js`: shared dropdown navigation and service layouts; German responsive text rules live here.
+- `assets/footer.css`: corporate footer used across 19 public pages per site.
+- `assets/printing.css` / `printing.js`: printing cards and accessible carousel.
+- `assets/language-switcher.js` / `language-switcher.css`: English/German route switching.
+- Page HTML contains the header/footer markup. Apply shared markup changes to all public pages in both repositories.
+
+When adding a page, provide matching localized routes, navigation/footer links as appropriate, canonical and alternate-language metadata, and a language-switcher route. Check headings, long German words, buttons and cards at 320, 360, 390 and 768px, plus desktop. Test both themes and keyboard navigation. Do not mask layout problems by hiding page overflow.
 
 ## Tech Stack
 
@@ -60,6 +73,8 @@ Start the development server with Node watch mode:
 npm run dev
 ```
 
+Node.js 20 or newer is required. Set `PORT` to run both repositories simultaneously. The local Express contact endpoint deliberately returns HTTP 503 with an email fallback; SMTP delivery is handled by the production Vercel Function.
+
 By default, the site runs at:
 
 ```text
@@ -79,17 +94,19 @@ Messages are sent by email and are not stored in a database. If email delivery
 is unavailable, the frontend shows a mailto fallback.
 
 General enquiries and partnerships: [contact@abinod.com](mailto:contact@abinod.com).
-Product support for Ambiten and VeriNodo: [support@abinod.com](mailto:support@abinod.com).
+Product support for Ambiten, VeriNodo and PureConsent: [support@abinod.com](mailto:support@abinod.com).
 
 ## Cookies And Consent
 
-The German site loads PureConsent from https://com.pureconsent.de/consent.js with website ID 20169897-e478-431c-a1e3-1e2fff2826bb on every public page. Activate the www.abinod.de origin by completing its DNS verification in PureConsent before deployment. The configuration must use https://www.abinod.de/privacy/.
+The German site loads PureConsent from https://com.pureconsent.de/consent.js with website ID 20169897-e478-431c-a1e3-1e2fff2826bb on every public page. The production installation uses the verified www.abinod.de origin. Any additional origin needs its own authorization in PureConsent. The configuration must use https://www.abinod.de/privacy/.
 
 The former banner functions remain in assets/site.js and their styles remain in styles.css, but the initialization call is disabled. The old abinod_cookie_consent cookie is not migrated into PureConsent: visitors make a fresh choice. Rollback requires removing the PureConsent script tags and restoring runWhenIdle(openCookieConsent, 900).
 
 No optional analytics scripts are currently installed. The external VeriNodo testimonials loader is gated behind the marketing category. Future optional scripts must use type="text/plain" and data-consent="analytics" or data-consent="marketing"; external scripts use data-src instead of src. Do not gate the site's essential navigation or contact form. Already-running third-party services require provider-specific cleanup on withdrawal.
 
-PureConsent stores choices in first-party localStorage for 180 days and submits consent receipts and separate page-view events. Its persistent privacy button reopens settings. The widget does not work on an unregistered localhost or preview origin; do not bypass origin verification to test it. Both rejection and acceptance must be verified on the authorized production domain after activation. The .com site requires its own website ID and is unchanged.
+PureConsent stores choices in first-party localStorage for 180 days and submits consent receipts and separate page-view events. Its persistent privacy button reopens settings. The widget does not work on an unregistered localhost or preview origin; do not bypass origin verification to test it. Verify rejection, acceptance and withdrawal on the authorized production domain after integration changes. The .com site requires its own website ID and is unchanged.
+
+The German site uses PureConsent; the English site retains its separate legacy consent integration. Consent configuration is origin-specific.
 
 ## Service Worker
 
@@ -141,7 +158,7 @@ verified sender allowed by the SMTP provider. You can verify the deployed API
 configuration at:
 
 ```text
-https://www.abinod.com/api/health
+https://www.abinod.de/api/health
 ```
 
 ## Open Graph
@@ -161,11 +178,18 @@ assets/og-abinod.png
 ├── blog/
 ├── brand-essence/
 ├── contact/
+├── documentation/
 ├── docs/
 ├── ecosystem/
 ├── founder/
 ├── mission/
 ├── products/
+├── solutions/
+├── printing/
+├── privacy/
+├── api/
+├── sw.js
+├── vercel.json
 ├── server.js
 ├── styles.css
 └── package.json
