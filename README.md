@@ -198,3 +198,9 @@ assets/og-abinod.png
 ## Brand Principle
 
 Strong foundations create stronger systems.
+
+## Brand assets and printing carousel
+
+The supplied logo, favicons and home-screen icons live in `assets/abinod-assets/`. Shared logo references use `assets/abinod-mark.svg`; public pages link the SVG/PNG favicons, Apple touch icon and `site.webmanifest`. Update the service-worker cache version when replacing cached brand assets.
+
+The printing carousel advances every 4.5 seconds and loops from the last slide to the first. It pauses on hover, keyboard focus, hidden tabs and when offscreen. Visitors can pause it explicitly; reduced-motion preferences disable autoplay. Arrow buttons, dot controls and keyboard navigation remain available.

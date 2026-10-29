@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
-  <title id="title">Abinod keystone mark</title>
-  <path fill="#D4AF37" d="M64 12 118 108H92L64 58 36 108H10L64 12Z"/>
-  <path fill="#080F14" d="M64 38 100 108H82L64 74 46 108H28L64 38Z"/>
-  <path fill="#D4AF37" d="M57 82h14l13 26H69l-5-10-5 10H44l13-26Z"/>
-  <path fill="#F1D673" d="M64 12 76 33 69 45 64 36 43 73H29L64 12Z" opacity=".78"/>
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="256" height="256" rx="20" fill="black"/>
+<path d="M79.3084 178.671L50.2335 150.296L11 218.254H58.991L79.3084 178.671Z" fill="white"/>
+<path d="M53.0359 145.392L69.1497 115.967L97.524 142.24L81.7605 173.066L53.0359 145.392Z" fill="#D1AA38"/>
+<path d="M157.075 37.5H108.734L71.9521 110.713L100.326 137.335L131.853 81.6377L145.165 112.464L162.546 154.504L188.251 218.254H245L157.075 37.5Z" fill="white"/>
+<path d="M83.1617 178.671L162.546 154.504L145.165 112.464L104.53 136.635L83.1617 178.671Z" fill="#08A1FE"/>
 </svg>

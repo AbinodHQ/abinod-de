@@ -455,3 +455,10 @@
 .printing-page .print-carousel-dots button::after{content:'';position:absolute;inset:12px 0;border-radius:99px;background:currentColor}
 .printing-page .print-carousel-dots button[aria-current=true]{width:32px}
 .printing-page .print-service-content .button{white-space:normal;max-width:100%;text-align:center}
+
+/* Match section gutters; give imagery the larger share of the hero. */
+.printing-page .print-hero{width:100%;max-width:none;margin:0;padding:clamp(3rem,6vw,6rem) clamp(20px,6vw,92px);grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px)}
+.print-carousel-pause{border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);padding:8px 12px;min-height:44px;font:inherit;cursor:pointer}
+.print-carousel-pause:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:1024px){.printing-page .print-hero{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:420px){.print-carousel-controls{gap:8px;flex-wrap:wrap}.print-carousel-pause{flex-basis:100%}}

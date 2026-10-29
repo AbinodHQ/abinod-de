@@ -68,3 +68,13 @@
   :lang(de) main pre{max-width:100%;overflow-x:auto}
 }
 @media(max-width:760px){:lang(de) main blockquote{overflow-wrap:anywhere;hyphens:auto;font-size:clamp(1.3rem,5.5vw,2rem)} :lang(de) .foundation-product::before{display:none}}
+
+/* Keep the mobile hero products in independent cells rather than overlapping coordinates. */
+@media(max-width:760px){
+ .hero .hero-visual{min-height:0;padding-top:32px}
+ .hero .foundation-system{width:100%;height:auto;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0}
+ .hero .foundation-keystone{position:relative;inset:auto;transform:none;grid-column:1/-1;justify-self:center;margin-bottom:24px}
+ .hero .foundation-product{position:relative;inset:auto;transform:none;min-width:0;max-width:none;width:100%;padding:16px;overflow-wrap:anywhere}
+ .hero .foundation-product.product-three{grid-column:1/-1;justify-self:center;width:calc(50% - 8px)}
+ .hero .foundation-product::before,.hero .foundation-keystone::after,.hero .foundation-planes{display:none}
+}

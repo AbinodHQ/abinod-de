@@ -1,0 +1,24 @@
+{
+  "name": "Abinod",
+  "short_name": "Abinod",
+  "lang": "de",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#10161d",
+  "theme_color": "#10161d",
+  "icons": [
+    {
+      "src": "/assets/abinod-assets/abinod-icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/abinod-assets/abinod-icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
