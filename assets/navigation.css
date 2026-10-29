@@ -40,3 +40,12 @@
 }
 @media(max-width:700px){.services-grid{grid-template-columns:1fr}.services-grid .card-actions .button{width:100%}}
 @media(max-width:420px){.site-header{padding:14px 12px;gap:8px}.site-header .brand{gap:6px;font-size:.74rem;letter-spacing:.16em}.site-header .brand img{width:24px}.site-header .header-actions{gap:4px}.site-header .header-button{padding:0 8px;font-size:.65rem;min-width:36px}.site-header .menu-toggle{width:36px}}
+
+/* Service pages share the site's light/dark contrast and readable card layout. */
+.solutions-page .feature-list li,.printing-page .feature-list li{color:var(--slate)}
+.solutions-page .portfolio-card h3{font-size:clamp(1.25rem,2vw,1.65rem);line-height:1.3;overflow-wrap:anywhere}
+.solutions-page .portfolio-card{min-width:0}
+.solutions-page .commercial-article>.section,.solutions-page #services{scroll-margin-top:110px}
+.solutions-page .commercial-article .button.secondary,.printing-page main .button.secondary{color:var(--ink);border-color:var(--line)}
+.contact-page #enterprise{scroll-margin-top:110px}
+.primary-nav .nav-panel a[aria-current=page]{background:rgba(212,175,55,.14);font-weight:700}

@@ -1,0 +1,457 @@
+
+/* ==========================================
+   ABINOD — DIGITAL PRINTING
+   ========================================== */
+
+.printing-page {
+  overflow-x: hidden;
+}
+
+/* Hero */
+
+.print-hero {
+  width: min(1240px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.print-hero-copy h1 {
+  max-width: 650px;
+  font-size: clamp(2.8rem, 5.2vw, 5.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  margin: 1rem 0 1.5rem;
+}
+
+.print-hero-copy > p:not(.eyebrow) {
+  max-width: 570px;
+  line-height: 1.75;
+}
+
+.print-hero-lead {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.4 !important;
+}
+
+.print-hero .hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.print-hero-note {
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  margin-top: 1.7rem;
+}
+
+/* Carousel */
+
+.print-carousel {
+  min-width: 0;
+}
+
+.print-carousel-track {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+  border-radius: 22px;
+}
+
+.print-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.print-slide {
+  flex: 0 0 100%;
+  position: relative;
+  min-width: 0;
+  min-height: 360px;
+  aspect-ratio: 5 / 4;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 22px;
+  scroll-snap-align: start;
+  background: #172536;
+  isolation: isolate;
+}
+
+.print-slide-art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+
+/* Supplied printing artwork. */
+.print-slide-art-apparel {
+  background-color: #182b3e;
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(8, 15, 28, 0.94),
+      rgba(8, 15, 28, 0.05) 75%
+    ),
+    url("hero-custom-apparel.webp");
+}
+
+.print-slide-art-business {
+  background-color: #34424a;
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(8, 15, 28, 0.94),
+      rgba(8, 15, 28, 0.05) 75%
+    ),
+    url("hero-business-print.webp");
+}
+
+.print-slide-art-detail {
+  background-color: #45382e;
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(8, 15, 28, 0.94),
+      rgba(8, 15, 28, 0.05) 75%
+    ),
+    url("hero-print-detail.webp");
+}
+
+.print-slide figcaption {
+  position: absolute;
+  left: clamp(1.25rem, 3vw, 2.5rem);
+  right: 1.5rem;
+  bottom: clamp(1.5rem, 3vw, 2.8rem);
+  z-index: 1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.print-slide figcaption span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #d7e4f3;
+}
+
+.print-slide figcaption strong {
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-weight: 750;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.print-slide figcaption small {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.print-carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15rem 0 0.5rem;
+  gap: 1rem;
+}
+
+.print-carousel-arrow {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid
+    color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 50%;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.print-carousel-arrow:hover:not(:disabled) {
+  background: color-mix(
+    in srgb, currentColor 8%, transparent
+  );
+}
+
+.print-carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.print-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.print-carousel-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: currentColor;
+  opacity: 0.3;
+  cursor: pointer;
+  transition:
+    width 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.print-carousel-dots button[aria-current="true"] {
+  width: 29px;
+  opacity: 0.95;
+}
+
+.print-carousel-note {
+  margin: 0.5rem 0 0;
+  opacity: 0.65;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.print-carousel button:focus-visible,
+.print-carousel-track:focus-visible {
+  outline: 3px solid #4f9ed7;
+  outline-offset: 4px;
+}
+
+.printing-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Service cards */
+
+.print-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.print-service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid
+    color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.print-service-visual {
+  min-height: 220px;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+}
+
+.print-service-visual-apparel {
+  background-color: #28384b;
+  background-image:
+    linear-gradient(125deg,
+      rgba(19, 36, 54, 0.2),
+      rgba(19, 36, 54, 0)),
+    url("service-apparel.webp");
+}
+
+.print-service-visual-business {
+  background-color: #d9d2c5;
+  background-image:
+    linear-gradient(125deg,
+      rgba(20, 30, 41, 0.15),
+      transparent),
+    url("service-business.webp");
+}
+
+.print-service-visual-process {
+  background-color: #5a554d;
+  background-image:
+    linear-gradient(125deg,
+      rgba(25, 33, 43, 0.25),
+      transparent),
+    url("service-screen-print.webp");
+}
+
+.print-service-content {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.print-service-content h3 {
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.print-service-content p {
+  line-height: 1.7;
+  margin: 0;
+}
+
+.print-service-content .feature-list {
+  margin-top: 0.5rem;
+}
+
+.print-service-content .button {
+  margin-top: auto;
+}
+
+/* Process */
+
+.print-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  margin: 2rem 0 0;
+  list-style: none;
+}
+
+.print-steps li {
+  border-top: 1px solid
+    color-mix(in srgb, currentColor 25%, transparent);
+  padding-top: 1.5rem;
+}
+
+.print-step-number {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+}
+
+.print-steps h3 {
+  margin: 0.9rem 0;
+  font-size: 1.2rem;
+}
+
+.print-steps p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Requirements */
+
+.print-guidance-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border-radius: 20px;
+  background: color-mix(
+    in srgb, currentColor 5%, transparent
+  );
+}
+
+.print-guidance-inner h2 {
+  margin: 0.5rem 0 1.25rem;
+}
+
+.print-guidance-inner p {
+  line-height: 1.75;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .print-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .print-hero-copy {
+    max-width: 800px;
+  }
+
+  .print-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .print-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .print-hero {
+    width: calc(100% - 32px);
+    padding: 2.5rem 0;
+  }
+
+  .print-hero-copy h1 {
+    font-size: clamp(2.6rem, 10vw, 3.5rem);
+  }
+
+  .print-slide {
+    aspect-ratio: 4 / 5;
+    min-height: 310px;
+  }
+
+  .print-service-grid,
+  .print-steps,
+  .print-guidance-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .print-service-visual {
+    min-height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .print-carousel-track {
+    scroll-behavior: auto;
+  }
+
+  .print-slide-art,
+  .print-carousel-arrow,
+  .print-carousel-dots button {
+    transition: none;
+  }
+}
+
+/* Account for the fixed site header and preserve theme contrast. */
+.printing-page main{padding-top:88px}
+.printing-page .print-hero .button.secondary{color:var(--ink);border-color:var(--line)}
+.printing-page .print-service-card{background:var(--surface,#fff)}
+.printing-page #print-services{scroll-margin-top:110px}
+.printing-page .print-carousel-dots button{min-width:32px;min-height:32px;background:transparent;position:relative}
+.printing-page .print-carousel-dots button::after{content:'';position:absolute;inset:12px 0;border-radius:99px;background:currentColor}
+.printing-page .print-carousel-dots button[aria-current=true]{width:32px}
+.printing-page .print-service-content .button{white-space:normal;max-width:100%;text-align:center}
