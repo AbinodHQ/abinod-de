@@ -204,3 +204,9 @@ Strong foundations create stronger systems.
 The supplied logo, favicons and home-screen icons live in `assets/abinod-assets/`. Shared logo references use `assets/abinod-mark.svg`; public pages link the SVG/PNG favicons, Apple touch icon and `site.webmanifest`. Update the service-worker cache version when replacing cached brand assets.
 
 The printing carousel advances every 4.5 seconds and loops from the last slide to the first. It pauses on hover, keyboard focus, hidden tabs and when offscreen. Visitors can pause it explicitly; reduced-motion preferences disable autoplay. Arrow buttons, dot controls and keyboard navigation remain available.
+
+## Homepage articles and legal notice
+
+`/impressum/` contains the provider information and is linked from navigation and the footer. Keep legal details synchronized across both language repositories.
+
+The homepage shows the two newest published cards from `/blog/`, sorted by `time[datetime]` (ISO `YYYY-MM-DD`). Add each new article to the localized blog index with its publication date. `assets/latest-posts.js` refreshes the homepage from that index, excludes future-dated entries, and resolves article and image paths. The embedded cards remain available if JavaScript or the network is unavailable. Update those fallback cards when publishing.

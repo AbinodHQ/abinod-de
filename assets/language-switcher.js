@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const availableOnBoth = new Set([
+    "/impressum/",
     "/solutions/",
     "/printing/","/documentation/","/blog/beyond-the-cookie-banner/","/","/about/","/blog/","/blog/Ambiten-Core-v1.2.4 — Context-Binding-and-Runtime-Resolution-Refinements/","/blog/Ambiten-Core-v1.3.0 — Modular-Configuration-and-Runtime-Defaults/","/blog/ambiten-v1-2-0-stronger-schema-enforcement/","/blog/strong-foundations-create-stronger-systems/","/blog/verinodo-launch-v1.0.0/","/brand-essence/","/contact/","/docs/","/ecosystem/","/founder/","/mission/","/og-abinod.html","/privacy/","/products/"]);
   const host = window.location.hostname.toLowerCase();

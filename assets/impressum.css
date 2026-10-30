@@ -1,0 +1,64 @@
+/* Abinod Impressum: minimal, theme-friendly additions to existing styles.css */
+.legal-hero .legal-intro-note {
+  font-size: .95rem;
+  opacity: .78;
+}
+
+.impressum-article {
+  max-width: 1060px;
+  margin-inline: auto;
+}
+
+.impressum-article section {
+  scroll-margin-top: 110px;
+}
+
+.impressum-article address {
+  font-style: normal;
+  line-height: 1.85;
+}
+
+.legal-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.legal-panel {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2.8vw, 2rem);
+}
+
+.legal-panel h3 {
+  margin-top: 0;
+}
+
+.legal-panel p {
+  overflow-wrap: anywhere;
+}
+
+.legal-muted {
+  opacity: .75;
+}
+
+.legal-id {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .06em;
+}
+
+.legal-id strong{
+  font-size: 1.2em;
+}
+
+.impressum-article a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .legal-details-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -78,6 +78,10 @@
     {
       "source": "/printing/",
       "destination": "/printing/index.html"
+    },
+    {
+      "source": "/impressum/",
+      "destination": "/impressum/index.html"
     }
   ],
   "headers": [
