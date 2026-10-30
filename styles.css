@@ -2628,9 +2628,8 @@ body[data-theme='dark'] .site-guide-actions .button.secondary {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 20%;
+  aspect-ratio: auto;
+  object-fit: contain;
 }
 
 .founder-location {
