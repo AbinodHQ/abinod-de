@@ -7,6 +7,7 @@
       if (group === except) return
       group.querySelector('button').setAttribute('aria-expanded', 'false')
       group.querySelector('.nav-panel').hidden = true
+      group.querySelectorAll('.nav-panel-utility[open]').forEach(item => { item.open = false })
     })
   const open = group => {
     close(group)
@@ -44,6 +45,13 @@
   })
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return
+    const disclosure = nav.querySelector('.nav-panel-utility[open]')
+    if (disclosure) {
+      disclosure.open = false
+      disclosure.querySelector('summary').focus()
+      event.preventDefault()
+      return
+    }
     const active = groups.find(
       group =>
         group.querySelector('button').getAttribute('aria-expanded') === 'true'

@@ -1,4 +1,4 @@
-const CACHE_NAME = "abinod-static-v24-latest-posts-impressum";
+const CACHE_NAME = "abinod-de-static-v25-dongo-privacy-navigation";
 const STATIC_ASSETS = [
   "/styles.css",
   "/assets/site.js",

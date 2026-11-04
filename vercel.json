@@ -36,8 +36,8 @@
       "destination": "/blog/ambiten-v1-2-0-stronger-schema-enforcement/index.html"
     },
     {
-      "source": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/",
-      "destination": "/blog/Ambiten Core v1.2.4 — Context Binding and Runtime Resolution Refinements/index.html"
+      "source": "/blog/Ambiten Core v1.2.4 \u2014 Context Binding and Runtime Resolution Refinements/",
+      "destination": "/blog/Ambiten Core v1.2.4 \u2014 Context Binding and Runtime Resolution Refinements/index.html"
     },
     {
       "source": "/brand-essence/",
@@ -82,6 +82,10 @@
     {
       "source": "/impressum/",
       "destination": "/impressum/index.html"
+    },
+    {
+      "source": "/dongo/privacy/",
+      "destination": "/dongo/privacy/index.html"
     }
   ],
   "headers": [

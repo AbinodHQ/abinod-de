@@ -78,3 +78,13 @@
  .hero .foundation-product.product-three{grid-column:1/-1;justify-self:center;width:calc(50% - 8px)}
  .hero .foundation-product::before,.hero .foundation-keystone::after,.hero .foundation-planes{display:none}
 }
+
+/* Nested privacy disclosure within the Company navigation. */
+.primary-nav .nav-panel-utility{margin-top:8px;padding-top:8px;border-top:1px solid var(--line);min-width:0}
+.primary-nav .nav-panel-utility summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;min-height:44px;border-radius:6px;color:var(--ink);font:inherit;line-height:1.4;cursor:pointer;list-style:none}
+.primary-nav .nav-panel-utility summary::-webkit-details-marker{display:none}
+.primary-nav .nav-panel-utility summary::after{content:'';flex-shrink:0;width:6px;height:6px;border-right:1.5px solid;border-bottom:1.5px solid;transform:rotate(45deg)}
+.primary-nav .nav-panel-utility[open] summary::after{transform:rotate(225deg)}
+.primary-nav .nav-panel-utility summary:hover,.primary-nav .nav-panel-utility summary:focus-visible{background:rgba(212,175,55,.14)}
+.primary-nav .nav-privacy-links{margin:4px 0 4px 12px;padding-left:8px;border-left:2px solid var(--line)}
+.primary-nav .nav-privacy-links a{white-space:normal;overflow-wrap:anywhere;min-height:44px}

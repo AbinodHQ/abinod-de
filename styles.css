@@ -2676,6 +2676,10 @@ body[data-theme='dark'] .site-guide-actions .button.secondary {
   overflow-wrap: anywhere;
 }
 
+.nav-panel-utility {
+ 
+}
+
 @media (max-width: 680px) {
   .founder-legal-grid {
     grid-template-columns: 1fr;
