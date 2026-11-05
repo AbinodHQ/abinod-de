@@ -86,6 +86,10 @@
     {
       "source": "/dongo/privacy/",
       "destination": "/dongo/privacy/index.html"
+    },
+    {
+      "source": "/dongo/",
+      "destination": "/dongo/index.html"
     }
   ],
   "headers": [

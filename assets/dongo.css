@@ -1,0 +1,600 @@
+/* Dongo product page for Abinod. Scoped: does not replace shared site styles. */
+.dongo-main {
+	--dn-navy: #061c30;
+	--dn-navy-deep: #031522;
+	--dn-teal: #14d7ca;
+	--dn-ink: #10202e;
+	--dn-border: rgba(14, 76, 90, .17);
+	--dn-muted: #52636e;
+	color: inherit;
+	overflow: hidden
+}
+
+.dongo-main *,
+.dongo-main *::before,
+.dongo-main *::after {
+	box-sizing: border-box
+}
+
+.dongo-main .dongo-wrap {
+	width: min(1160px, calc(100% - 44px));
+	margin-inline: auto
+}
+
+.dongo-main a:focus-visible,
+.dongo-main button:focus-visible,
+.dongo-main summary:focus-visible {
+	outline: 3px solid #16c9c4;
+	outline-offset: 4px
+}
+
+.dongo-main .dongo-kicker {
+	font-weight: 750;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	font-size: .74rem;
+	color: var(--dn-teal);
+	margin: 0 0 1.05rem
+}
+
+.dongo-hero {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	color: #f7fcff;
+	background: radial-gradient(circle at 81% 28%, rgba(20, 215, 202, .19), transparent 36%), radial-gradient(circle at 12% 92%, rgba(13, 97, 120, .24), transparent 38%), linear-gradient(135deg, var(--dn-navy-deep), #061d30 62%, #0a3544);
+	padding: clamp(4.75rem, 7vw, 7.5rem) 0 clamp(4.75rem, 6vw, 7rem)
+}
+
+.dongo-hero::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	width: min(730px, 85vw);
+	aspect-ratio: 1;
+	border: 1px solid rgba(20, 215, 202, .13);
+	border-radius: 50%;
+	right: -18%;
+	top: -38%;
+	box-shadow: 0 0 0 90px rgba(20, 215, 202, .018), 0 0 0 190px rgba(20, 215, 202, .016)
+}
+
+.dongo-hero-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+	gap: clamp(2rem, 5vw, 5rem);
+	align-items: center
+}
+
+.dongo-hero h1 {
+	font-size: clamp(2.65rem, 5.25vw, 4.95rem);
+	letter-spacing: -.055em;
+	line-height: 1.035;
+	margin: 0 0 1.4rem;
+	color: #fff;
+	max-width: 11.5ch
+}
+
+.dongo-hero h1 em {
+	font-style: normal;
+	color: var(--dn-teal)
+}
+
+.dongo-hero .dongo-lead {
+	font-size: clamp(1.07rem, 1.4vw, 1.28rem);
+	line-height: 1.72;
+	color: #d4e4ed;
+	max-width: 61ch;
+	margin: 0 0 1.45rem
+}
+
+.dongo-hero .dongo-subline {
+	font-weight: 750;
+	color: #f7ffff;
+	margin: 0 0 1.65rem
+}
+
+.dongo-actions {
+	display: flex;
+	align-items: center;
+	gap: .85rem;
+	flex-wrap: wrap;
+	margin-top: 1.65rem
+}
+
+.dongo-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: .55rem;
+	min-height: 47px;
+	border-radius: 10px;
+	padding: .78rem 1.2rem;
+	font-size: .92rem;
+	font-weight: 750;
+	text-decoration: none !important;
+	transition: transform .18s ease, background-color .18s ease
+}
+
+.dongo-btn:hover {
+	transform: translateY(-2px)
+}
+
+.dongo-btn-primary {
+	background: var(--dn-teal);
+	color: #062832 !important
+}
+
+.dongo-btn-primary:hover {
+	background: #65ece1
+}
+
+.dongo-btn-outline {
+	border: 1px solid rgba(235, 255, 255, .36);
+	color: #fff !important;
+	background: rgba(255, 255, 255, .035)
+}
+
+.dongo-btn-outline:hover {
+	background: rgba(255, 255, 255, .09)
+}
+
+.dongo-review {
+	display: inline-flex;
+	align-items: center;
+	gap: .55rem;
+	color: #bdebe8;
+	font-weight: 650;
+	font-size: .88rem;
+	margin-top: 1.3rem
+}
+
+.dongo-review::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #efca76;
+	box-shadow: 0 0 0 4px rgba(239, 202, 118, .15)
+}
+
+.dongo-hero-art {
+	position: relative;
+	max-width: 450px;
+	margin: auto;
+	width: 100%
+}
+
+.dongo-art-backdrop {
+	position: absolute;
+	inset: 3% 7% 11%;
+	border-radius: 40px;
+	background: radial-gradient(circle at 50% 38%, rgba(13, 245, 217, .23), rgba(13, 245, 217, .045) 56%, transparent 76%);
+	filter: blur(12px)
+}
+
+.dongo-art-card {
+	position: relative;
+	border: 1px solid rgba(98, 220, 212, .34);
+	border-radius: 25px;
+	background: linear-gradient(148deg, rgba(10, 42, 58, .98), rgba(2, 19, 33, .97));
+	padding: clamp(1.25rem, 3vw, 2rem);
+	box-shadow: 0 25px 80px rgba(0, 0, 0, .43), inset 0 1px rgba(255, 255, 255, .08)
+}
+
+.dongo-art-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.6rem
+}
+
+.dongo-art-mark {
+	width: 80px;
+	height: 80px;
+	border-radius: 20px;
+	object-fit: cover;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, .21)
+}
+
+.dongo-art-top strong {
+	display: block;
+	color: #fff;
+	font-size: 1.2rem;
+	letter-spacing: .1em
+}
+
+.dongo-art-top small {
+	color: #b8e7e2;
+	font-size: .75rem
+}
+
+.dongo-art-note {
+	font-size: .68rem;
+	text-transform: uppercase;
+	letter-spacing: .12em;
+	color: #88b7bc;
+	margin-bottom: .8rem
+}
+
+.dongo-art-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.2rem;
+	background: rgba(255, 255, 255, .045);
+	border: 1px solid rgba(175, 237, 231, .13);
+	padding: 1rem;
+	border-radius: 13px;
+	margin-bottom: .75rem;
+	color: #f4fbfc
+}
+
+.dongo-art-row strong {
+	display: block;
+	font-size: .92rem
+}
+
+.dongo-art-row small {
+	color: #adcbd0;
+	font-size: .75rem
+}
+
+.dongo-ui-switch {
+	flex: 0 0 45px;
+	height: 26px;
+	border-radius: 26px;
+	background: var(--dn-teal);
+	padding: 4px;
+	display: flex;
+	justify-content: flex-end
+}
+
+.dongo-ui-switch span {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 2px 5px #042a3070
+}
+
+.dongo-ui-switch.is-off {
+	background: #607583;
+	justify-content: flex-start
+}
+
+.dongo-art-foot {
+	font-size: .72rem;
+	color: #83a9b3;
+	line-height: 1.5;
+	margin-top: 1.1rem
+}
+
+.dongo-strip {
+	position: relative;
+	background: #092437;
+	color: #d9f1f1;
+	border-top: 1px solid rgba(48, 197, 187, .25);
+	border-bottom: 1px solid rgba(48, 197, 187, .25)
+}
+
+.dongo-strip .dongo-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.4rem 3rem;
+	padding-block: 1.2rem;
+	align-items: center
+}
+
+.dongo-strip span {
+	font-size: .85rem;
+	font-weight: 650;
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem
+}
+
+.dongo-strip span::before {
+	content: '✓';
+	color: var(--dn-teal);
+	font-weight: 900
+}
+
+.dongo-section {
+	padding: clamp(4.25rem, 7vw, 6.4rem) 0
+}
+
+.dongo-section h2 {
+	font-size: clamp(2rem, 3.4vw, 3.1rem);
+	letter-spacing: -.037em;
+	line-height: 1.14;
+	margin: 0 0 1rem
+}
+
+.dongo-section .dongo-section-lead {
+	max-width: 66ch;
+	line-height: 1.75;
+	opacity: .76;
+	margin-bottom: 2.25rem
+}
+
+.dongo-features-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.2rem
+}
+
+.dongo-feature {
+	border-radius: 18px;
+	padding: clamp(1.4rem, 2.4vw, 2rem);
+	border: 1px solid var(--dn-border);
+	background: rgba(144, 175, 174, .035);
+	box-shadow: 0 12px 36px rgba(0, 30, 50, .035)
+}
+
+.dongo-feature-num {
+	color: #159e9c;
+	font-weight: 800;
+	letter-spacing: .14em;
+	font-size: .78rem
+}
+
+.dongo-feature h3 {
+	font-size: 1.28rem;
+	margin: 1.05rem 0 .85rem;
+	line-height: 1.28
+}
+
+.dongo-feature p {
+	line-height: 1.7;
+	opacity: .77;
+	margin: 0
+}
+
+.dongo-privacy-band {
+	background: #061d2e;
+	color: #edfafa;
+	padding: clamp(4rem, 7vw, 5.8rem) 0
+}
+
+.dongo-privacy-grid {
+	display: grid;
+	grid-template-columns: 1.08fr .92fr;
+	gap: 3rem;
+	align-items: center
+}
+
+.dongo-privacy-band .dongo-kicker {
+	color: #45e6d9
+}
+
+.dongo-privacy-band h2 {
+	color: #fff;
+	max-width: 16ch
+}
+
+.dongo-privacy-band p {
+	color: #c0d4de;
+	line-height: 1.75
+}
+
+.dongo-privacy-points {
+	display: grid;
+	gap: .9rem
+}
+
+.dongo-privacy-point {
+	border: 1px solid rgba(107, 229, 212, .18);
+	border-radius: 13px;
+	padding: 1.05rem 1.2rem;
+	background: rgba(255, 255, 255, .035)
+}
+
+.dongo-privacy-point strong {
+	display: block;
+	color: #fff;
+	margin-bottom: .3rem
+}
+
+.dongo-privacy-point span {
+	font-size: .88rem;
+	color: #b9d0d6;
+	line-height: 1.6
+}
+
+.dongo-note {
+	border-left: 3px solid var(--dn-teal);
+	padding: .7rem 1rem;
+	background: rgba(21, 185, 178, .085);
+	font-size: .89rem;
+	margin-top: 1.25rem !important
+}
+
+.dongo-how-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 2rem;
+	margin-top: 2rem
+}
+
+.dongo-step-number {
+	font-size: 2.4rem;
+	font-weight: 750;
+	color: #159e9c;
+	line-height: 1;
+	margin-bottom: 1rem
+}
+
+.dongo-how-grid h3 {
+	font-size: 1.14rem;
+	margin: 0 0 .5rem
+}
+
+.dongo-how-grid p {
+	line-height: 1.7;
+	opacity: .73;
+	margin: 0
+}
+
+.dongo-faq {
+	background: rgba(126, 166, 167, .055)
+}
+
+.dongo-faq-list {
+	max-width: 860px;
+	display: grid;
+	gap: .75rem
+}
+
+.dongo-faq details {
+	border: 1px solid var(--dn-border);
+	border-radius: 13px;
+	background: rgba(146, 173, 184, .045);
+	padding: 0 1.25rem
+}
+
+.dongo-faq summary {
+	cursor: pointer;
+	padding: 1.15rem .2rem;
+	font-weight: 750;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem
+}
+
+.dongo-faq summary::-webkit-details-marker {
+	display: none
+}
+
+.dongo-faq summary::after {
+	content: '+';
+	font-size: 1.5rem;
+	line-height: 1;
+	color: #149f9b
+}
+
+.dongo-faq details[open] summary::after {
+	content: '−'
+}
+
+.dongo-faq details p {
+	margin: 0 0 1.2rem;
+	line-height: 1.75;
+	opacity: .77;
+	max-width: 74ch
+}
+
+.dongo-bottom {
+	padding: clamp(3.5rem, 7vw, 5.6rem) 0;
+	background: linear-gradient(125deg, #062034, #07323c);
+	color: #f5fdff
+}
+
+.dongo-bottom-layout {
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
+	align-items: center
+}
+
+.dongo-bottom h2 {
+	color: #fff;
+	margin: .15rem 0 .8rem;
+	font-size: clamp(1.7rem, 3vw, 2.55rem)
+}
+
+.dongo-bottom p {
+	color: #c4d9df;
+	margin: 0;
+	line-height: 1.7
+}
+
+.dongo-bottom .dongo-btn {
+	flex-shrink: 0
+}
+
+.dongo-legal {
+	display: flex;
+	gap: 1.15rem;
+	flex-wrap: wrap;
+	margin-top: 1rem
+}
+
+.dongo-legal a {
+	color: #8bebe1;
+	font-size: .85rem
+}
+
+@media(max-width:900px) {
+
+	.dongo-hero-grid,
+	.dongo-privacy-grid {
+		grid-template-columns: 1fr
+	}
+
+	.dongo-hero h1 {
+		max-width: 16ch
+	}
+
+	.dongo-hero-art {
+		max-width: 480px
+	}
+
+	.dongo-features-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+	}
+
+	.dongo-how-grid {
+		gap: 1.3rem
+	}
+}
+
+@media(max-width:640px) {
+	.dongo-main .dongo-wrap {
+		width: min(100% - 34px, 1160px)
+	}
+
+	.dongo-hero {
+		padding-top: 3.5rem
+	}
+
+	.dongo-hero-grid {
+		gap: 2.5rem
+	}
+
+	.dongo-hero h1 {
+		font-size: clamp(2.5rem, 11vw, 3.5rem)
+	}
+
+	.dongo-features-grid,
+	.dongo-how-grid {
+		grid-template-columns: 1fr
+	}
+
+	.dongo-bottom-layout {
+		align-items: flex-start;
+		flex-direction: column
+	}
+
+	.dongo-art-card {
+		padding: 1.25rem
+	}
+
+	.dongo-art-mark {
+		width: 68px;
+		height: 68px
+	}
+}
+
+@media(prefers-reduced-motion:reduce) {
+	.dongo-btn {
+		transition: none
+	}
+
+	.dongo-btn:hover {
+		transform: none
+	}
+}
