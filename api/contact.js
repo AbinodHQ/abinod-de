@@ -121,13 +121,13 @@ export default async function handler(request, response) {
 
     if (error.code === "SMTP_NOT_CONFIGURED") {
       return response.status(503).json({
-        error: `Email delivery is not configured yet. Please email ${fallbackEmail}.`,
+        error: `Email delivery is not configured yet. Please email ${fallbackEmail.replace("@", "(at)")}.`,
         fallbackEmail,
       });
     }
 
     return response.status(500).json({
-      error: `The message could not be sent right now. Please email ${fallbackEmail}.`,
+      error: `The message could not be sent right now. Please email ${fallbackEmail.replace("@", "(at)")}.`,
       fallbackEmail,
     });
   }

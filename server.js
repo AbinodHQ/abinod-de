@@ -25,7 +25,7 @@ app.get("/api/health", (request, response) => {
 app.post("/api/contact", (request, response) => {
   response.status(503).json({
     error:
-      "Email delivery runs through the Vercel API in production. Please email contact@abinod.com.",
+      "Email delivery runs through the Vercel API in production. Please email contact(at)abinod.com.",
     fallbackEmail: "contact@abinod.com",
   });
 });
